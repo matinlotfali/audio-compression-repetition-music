@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1085" height="244" viewBox="0 0 1085 244">
+ <g stroke="#000000" fill="#000000" font-family="Segoe UI" font-size="12">
+  <g>
+   <g>
+    <clipPath id="clip1">
+     <path d="M-99999.5,2.5 L-99999.5,100000.5 L100000.5,100000.5 L100000.5,2.5 z"/>
+    </clipPath>
+    <g clip-path="url(#clip1)">
+     <g fill="#DDDDDD">
+      <rect stroke="none" x="84.5" y="45.5" width="931" height="141"/>
+     </g>
+     <g>
+      <clipPath id="clip2" clip-path="url(#clip1)">
+       <path d="M12.5,3.5 L12.5,23.5 L1015.5,23.5 L1015.5,3.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip2)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="84.5" y="25.5" width="154" height="20"/>
+     </g>
+     <text stroke="none" x="161.5" y="35.5" dy="4.97" text-anchor="middle">mixture</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M84.5,25.5 L84.5,45.5 L238.5,45.5 L238.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="239.5" y="25.5" width="155" height="20"/>
+     </g>
+     <text stroke="none" x="317" y="35.5" dy="4.97" text-anchor="middle">vocals</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M239.5,25.5 L239.5,45.5 L394.5,45.5 L394.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="238.5" y="25.5" width="1" height="20"/>
+      <rect stroke="none" x="395.5" y="25.5" width="154" height="20"/>
+     </g>
+     <text stroke="none" x="472.5" y="35.5" dy="4.97" text-anchor="middle">drums</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M395.5,25.5 L395.5,45.5 L549.5,45.5 L549.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="394.5" y="25.5" width="1" height="20"/>
+      <rect stroke="none" x="550.5" y="25.5" width="154" height="20"/>
+     </g>
+     <text stroke="none" x="627.5" y="35.5" dy="4.97" text-anchor="middle">repet-fg</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M550.5,25.5 L550.5,45.5 L704.5,45.5 L704.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="549.5" y="25.5" width="1" height="20"/>
+      <rect stroke="none" x="705.5" y="25.5" width="155" height="20"/>
+     </g>
+     <text stroke="none" x="783" y="35.5" dy="4.97" text-anchor="middle">repet-bg</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M705.5,25.5 L705.5,45.5 L860.5,45.5 L860.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="704.5" y="25.5" width="1" height="20"/>
+      <rect stroke="none" x="861.5" y="25.5" width="154" height="20"/>
+     </g>
+     <text stroke="none" x="938.5" y="35.5" dy="4.97" text-anchor="middle">sum</text>
+     <g stroke="#FFFFFF">
+      <path fill="none" d="M861.5,25.5 L861.5,45.5 L1015.5,45.5 L1015.5,25.5 z"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="860.5" y="25.5" width="1" height="20"/>
+     </g>
+     <g>
+      <clipPath id="clip3" clip-path="url(#clip1)">
+       <path d="M84.5,209.5 L84.5,227.5 L1015.5,227.5 L1015.5,209.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip3)">
+       <g>
+        <clipPath id="clip4" clip-path="url(#clip3)">
+         <path d="M497.5,209.5 L497.5,224.5 L602.5,224.5 L602.5,209.5 z"/>
+        </clipPath>
+        <g clip-path="url(#clip4)">
+         <g font-family="Tahoma" font-weight="bold">
+          <text stroke="none" x="497.87" y="221.5">I-Rate (Seconds)</text>
+         </g>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip5" clip-path="url(#clip1)">
+       <path d="M80.5,186.5 L80.5,210.5 L239.5,210.5 L239.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip5)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M84.5,186.5 L84.5,189.5"/>
+        <path fill="none" d="M110.5,186.5 L110.5,189.5"/>
+        <path fill="none" d="M135.5,186.5 L135.5,189.5"/>
+        <path fill="none" d="M161.5,186.5 L161.5,189.5"/>
+        <path fill="none" d="M187.5,186.5 L187.5,189.5"/>
+        <path fill="none" d="M212.5,186.5 L212.5,189.5"/>
+        <path fill="none" d="M238.5,186.5 L238.5,189.5"/>
+        <path fill="none" d="M97.5,186.5 L97.5,192.5"/>
+        <path fill="none" d="M123.5,186.5 L123.5,192.5"/>
+        <path fill="none" d="M148.5,186.5 L148.5,192.5"/>
+        <path fill="none" d="M174.5,186.5 L174.5,192.5"/>
+        <path fill="none" d="M200.5,186.5 L200.5,192.5"/>
+        <path fill="none" d="M225.5,186.5 L225.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="97.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="123.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="148.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="174.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="200.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="225.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip6" clip-path="url(#clip1)">
+       <path d="M80.5,186.5 L80.5,210.5 L239.5,210.5 L239.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip6)"/>
+     </g>
+     <g>
+      <clipPath id="clip7" clip-path="url(#clip1)">
+       <path d="M12.5,45.5 L12.5,186.5 L57.5,186.5 L57.5,45.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip7)">
+       <g font-family="Tahoma" font-weight="bold">
+        <g transform="translate(12.5,115.5)">
+         <g transform="rotate(-90)">
+          <text stroke="none" dy="12.01" text-anchor="middle">Distance of Referenced </text>
+         </g>
+        </g>
+        <g transform="translate(27.5,115.5)">
+         <g transform="rotate(-90)">
+          <text stroke="none" dy="12.01" text-anchor="middle">Frames / I-Rate</text>
+         </g>
+        </g>
+        <g transform="translate(42.5,115.5)">
+         <g transform="rotate(-90)">
+          <text stroke="none" dy="12.01" text-anchor="middle">(Frames Per Second)</text>
+         </g>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip8" clip-path="url(#clip1)">
+       <path d="M57.5,35.5 L57.5,197.5 L85.5,197.5 L85.5,35.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip8)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M81.5,179.5 L84.5,179.5"/>
+        <path fill="none" d="M81.5,173.5 L84.5,173.5"/>
+        <path fill="none" d="M81.5,166.5 L84.5,166.5"/>
+        <path fill="none" d="M81.5,159.5 L84.5,159.5"/>
+        <path fill="none" d="M81.5,146.5 L84.5,146.5"/>
+        <path fill="none" d="M81.5,139.5 L84.5,139.5"/>
+        <path fill="none" d="M81.5,132.5 L84.5,132.5"/>
+        <path fill="none" d="M81.5,126.5 L84.5,126.5"/>
+        <path fill="none" d="M81.5,112.5 L84.5,112.5"/>
+        <path fill="none" d="M81.5,106.5 L84.5,106.5"/>
+        <path fill="none" d="M81.5,99.5 L84.5,99.5"/>
+        <path fill="none" d="M81.5,92.5 L84.5,92.5"/>
+        <path fill="none" d="M81.5,79.5 L84.5,79.5"/>
+        <path fill="none" d="M81.5,72.5 L84.5,72.5"/>
+        <path fill="none" d="M81.5,66.5 L84.5,66.5"/>
+        <path fill="none" d="M81.5,59.5 L84.5,59.5"/>
+        <path fill="none" d="M81.5,45.5 L84.5,45.5"/>
+        <path fill="none" d="M78.5,186.5 L84.5,186.5"/>
+        <path fill="none" d="M78.5,153.5 L84.5,153.5"/>
+        <path fill="none" d="M78.5,119.5 L84.5,119.5"/>
+        <path fill="none" d="M78.5,86.5 L84.5,86.5"/>
+        <path fill="none" d="M78.5,52.5 L84.5,52.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="76.5" y="186.5" dy="4.76" text-anchor="end">0</text>
+        <text stroke="none" x="76.5" y="153.5" dy="4.76" text-anchor="end">5</text>
+        <text stroke="none" x="76.5" y="119.5" dy="4.76" text-anchor="end">10</text>
+        <text stroke="none" x="76.5" y="86.5" dy="4.76" text-anchor="end">15</text>
+        <text stroke="none" x="76.5" y="52.5" dy="4.76" text-anchor="end">20</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip9" clip-path="url(#clip1)">
+       <path d="M57.5,35.5 L57.5,197.5 L85.5,197.5 L85.5,35.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip9)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="84.5" y="45.5" width="154" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip10" clip-path="url(#clip1)">
+        <path d="M84.5,44.5 L84.5,186.5 L239.5,186.5 L239.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip10)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M99.9,61.19 L123,95.24 L148.67,97.9 L225.67,99.82 L225.67,96.72 L148.67,95.16 L123,92.73 L99.9,52.07 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M99.9,119.56 L123,146.03 L148.67,148.22 L225.67,149.95 L225.67,147.81 L148.67,146.45 L123,143.69 L99.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M99.9,119.56 L123,173.45 L148.67,174.28 L225.67,175.27 L225.67,174.11 L148.67,173.15 L123,172.51 L99.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M99.9,119.56 L123,172.98 L148.67,173.71 L225.67,174.69"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M99.9,119.56 L123,144.86 L148.67,147.34 L225.67,148.88"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M99.9,56.63 L123,93.98 L148.67,96.53 L225.67,98.27"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M84.5,219.5 L238.5,219.5"/>
+         <path fill="none" d="M84.5,186.5 L238.5,186.5"/>
+         <path fill="none" d="M84.5,153.5 L238.5,153.5"/>
+         <path fill="none" d="M84.5,119.5 L238.5,119.5"/>
+         <path fill="none" d="M84.5,86.5 L238.5,86.5"/>
+         <path fill="none" d="M84.5,52.5 L238.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M84.5,186.5 L84.5,45.5 M238.5,186.5 L84.5,186.5"/>
+     </g>
+     <g>
+      <clipPath id="clip11" clip-path="url(#clip1)">
+       <path d="M235.5,186.5 L235.5,210.5 L395.5,210.5 L395.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip11)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M239.5,186.5 L239.5,189.5"/>
+        <path fill="none" d="M265.5,186.5 L265.5,189.5"/>
+        <path fill="none" d="M291.5,186.5 L291.5,189.5"/>
+        <path fill="none" d="M317.5,186.5 L317.5,189.5"/>
+        <path fill="none" d="M342.5,186.5 L342.5,189.5"/>
+        <path fill="none" d="M368.5,186.5 L368.5,189.5"/>
+        <path fill="none" d="M394.5,186.5 L394.5,189.5"/>
+        <path fill="none" d="M252.5,186.5 L252.5,192.5"/>
+        <path fill="none" d="M278.5,186.5 L278.5,192.5"/>
+        <path fill="none" d="M304.5,186.5 L304.5,192.5"/>
+        <path fill="none" d="M329.5,186.5 L329.5,192.5"/>
+        <path fill="none" d="M355.5,186.5 L355.5,192.5"/>
+        <path fill="none" d="M381.5,186.5 L381.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="252.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="278.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="304.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="329.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="355.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="381.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip12" clip-path="url(#clip1)">
+       <path d="M235.5,186.5 L235.5,210.5 L395.5,210.5 L395.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip12)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="239.5" y="45.5" width="155" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip13" clip-path="url(#clip1)">
+        <path d="M238.5,44.5 L238.5,186.5 L395.5,186.5 L395.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip13)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M255,68.65 L278.25,111.03 L304.08,110.88 L381.58,103.88 L381.58,93.53 L304.08,99.65 L278.25,100.77 L255,55.32 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M255,119.56 L278.25,158.7 L304.08,159.96 L381.58,157.45 L381.58,150.59 L304.08,153.86 L278.25,153.25 L255,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M255,119.56 L278.25,177.28 L304.08,179.22 L381.58,179.77 L381.58,177.49 L304.08,177.45 L278.25,175.36 L255,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M255,119.56 L278.25,176.32 L304.08,178.33 L381.58,178.63"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M255,119.56 L278.25,155.97 L304.08,156.91 L381.58,154.02"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M255,61.98 L278.25,105.9 L304.08,105.26 L381.58,98.7"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M239.5,219.5 L394.5,219.5"/>
+         <path fill="none" d="M239.5,186.5 L394.5,186.5"/>
+         <path fill="none" d="M239.5,153.5 L394.5,153.5"/>
+         <path fill="none" d="M239.5,119.5 L394.5,119.5"/>
+         <path fill="none" d="M239.5,86.5 L394.5,86.5"/>
+         <path fill="none" d="M239.5,52.5 L394.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M394.5,186.5 L239.5,186.5"/>
+     </g>
+     <g>
+      <clipPath id="clip14" clip-path="url(#clip1)">
+       <path d="M391.5,186.5 L391.5,210.5 L550.5,210.5 L550.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip14)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M395.5,186.5 L395.5,189.5"/>
+        <path fill="none" d="M421.5,186.5 L421.5,189.5"/>
+        <path fill="none" d="M446.5,186.5 L446.5,189.5"/>
+        <path fill="none" d="M472.5,186.5 L472.5,189.5"/>
+        <path fill="none" d="M498.5,186.5 L498.5,189.5"/>
+        <path fill="none" d="M523.5,186.5 L523.5,189.5"/>
+        <path fill="none" d="M549.5,186.5 L549.5,189.5"/>
+        <path fill="none" d="M408.5,186.5 L408.5,192.5"/>
+        <path fill="none" d="M434.5,186.5 L434.5,192.5"/>
+        <path fill="none" d="M459.5,186.5 L459.5,192.5"/>
+        <path fill="none" d="M485.5,186.5 L485.5,192.5"/>
+        <path fill="none" d="M511.5,186.5 L511.5,192.5"/>
+        <path fill="none" d="M536.5,186.5 L536.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="408.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="434.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="459.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="485.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="511.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="536.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip15" clip-path="url(#clip1)">
+       <path d="M391.5,186.5 L391.5,210.5 L550.5,210.5 L550.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip15)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="395.5" y="45.5" width="154" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip16" clip-path="url(#clip1)">
+        <path d="M394.5,44.5 L394.5,186.5 L550.5,186.5 L550.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip16)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M410.9,98.34 L434,92.47 L459.67,95.47 L536.67,98.72 L536.67,93.46 L459.67,90.09 L434,87.06 L410.9,79.18 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M410.9,119.56 L434,145.11 L459.67,146.88 L536.67,148.56 L536.67,144.59 L459.67,142.58 L434,140.06 L410.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M410.9,119.56 L434,174.16 L459.67,174.43 L536.67,175.04 L536.67,172.8 L459.67,171.93 L434,171.79 L410.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M410.9,119.56 L434,172.98 L459.67,173.18 L536.67,173.92"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M410.9,119.56 L434,142.59 L459.67,144.73 L536.67,146.57"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M410.9,88.76 L434,89.77 L459.67,92.78 L536.67,96.09"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M395.5,219.5 L549.5,219.5"/>
+         <path fill="none" d="M395.5,186.5 L549.5,186.5"/>
+         <path fill="none" d="M395.5,153.5 L549.5,153.5"/>
+         <path fill="none" d="M395.5,119.5 L549.5,119.5"/>
+         <path fill="none" d="M395.5,86.5 L549.5,86.5"/>
+         <path fill="none" d="M395.5,52.5 L549.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M549.5,186.5 L395.5,186.5"/>
+     </g>
+     <g>
+      <clipPath id="clip17" clip-path="url(#clip1)">
+       <path d="M546.5,186.5 L546.5,210.5 L705.5,210.5 L705.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip17)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M550.5,186.5 L550.5,189.5"/>
+        <path fill="none" d="M576.5,186.5 L576.5,189.5"/>
+        <path fill="none" d="M601.5,186.5 L601.5,189.5"/>
+        <path fill="none" d="M627.5,186.5 L627.5,189.5"/>
+        <path fill="none" d="M653.5,186.5 L653.5,189.5"/>
+        <path fill="none" d="M678.5,186.5 L678.5,189.5"/>
+        <path fill="none" d="M704.5,186.5 L704.5,189.5"/>
+        <path fill="none" d="M563.5,186.5 L563.5,192.5"/>
+        <path fill="none" d="M589.5,186.5 L589.5,192.5"/>
+        <path fill="none" d="M614.5,186.5 L614.5,192.5"/>
+        <path fill="none" d="M640.5,186.5 L640.5,192.5"/>
+        <path fill="none" d="M666.5,186.5 L666.5,192.5"/>
+        <path fill="none" d="M691.5,186.5 L691.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="563.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="589.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="614.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="640.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="666.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="691.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip18" clip-path="url(#clip1)">
+       <path d="M546.5,186.5 L546.5,210.5 L705.5,210.5 L705.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip18)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="550.5" y="45.5" width="154" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip19" clip-path="url(#clip1)">
+        <path d="M549.5,44.5 L549.5,186.5 L705.5,186.5 L705.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip19)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M565.9,119.56 L589,100.25 L614.67,101.52 L691.67,99.75 L691.67,95.65 L614.67,97.83 L589,96.28 L565.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M565.9,119.56 L589,151.66 L614.67,152.45 L691.67,152.23 L691.67,149.38 L614.67,149.99 L589,148.77 L565.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M565.9,119.56 L589,179.91 L614.67,178.52 L691.67,177.48 L691.67,176.08 L614.67,177.08 L589,179.16 L565.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M565.9,119.56 L589,179.54 L614.67,177.8 L691.67,176.78"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M565.9,119.56 L589,150.22 L614.67,151.22 L691.67,150.81"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M565.9,119.56 L589,98.27 L614.67,99.67 L691.67,97.7"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M550.5,219.5 L704.5,219.5"/>
+         <path fill="none" d="M550.5,186.5 L704.5,186.5"/>
+         <path fill="none" d="M550.5,153.5 L704.5,153.5"/>
+         <path fill="none" d="M550.5,119.5 L704.5,119.5"/>
+         <path fill="none" d="M550.5,86.5 L704.5,86.5"/>
+         <path fill="none" d="M550.5,52.5 L704.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M704.5,186.5 L550.5,186.5"/>
+     </g>
+     <g>
+      <clipPath id="clip20" clip-path="url(#clip1)">
+       <path d="M701.5,186.5 L701.5,210.5 L861.5,210.5 L861.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip20)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M705.5,186.5 L705.5,189.5"/>
+        <path fill="none" d="M731.5,186.5 L731.5,189.5"/>
+        <path fill="none" d="M757.5,186.5 L757.5,189.5"/>
+        <path fill="none" d="M783.5,186.5 L783.5,189.5"/>
+        <path fill="none" d="M808.5,186.5 L808.5,189.5"/>
+        <path fill="none" d="M834.5,186.5 L834.5,189.5"/>
+        <path fill="none" d="M860.5,186.5 L860.5,189.5"/>
+        <path fill="none" d="M718.5,186.5 L718.5,192.5"/>
+        <path fill="none" d="M744.5,186.5 L744.5,192.5"/>
+        <path fill="none" d="M770.5,186.5 L770.5,192.5"/>
+        <path fill="none" d="M795.5,186.5 L795.5,192.5"/>
+        <path fill="none" d="M821.5,186.5 L821.5,192.5"/>
+        <path fill="none" d="M847.5,186.5 L847.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="718.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="744.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="770.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="795.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="821.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="847.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip21" clip-path="url(#clip1)">
+       <path d="M701.5,186.5 L701.5,210.5 L861.5,210.5 L861.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip21)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="705.5" y="45.5" width="155" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip22" clip-path="url(#clip1)">
+        <path d="M704.5,44.5 L704.5,186.5 L861.5,186.5 L861.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip22)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M721,56.64 L744.25,91.36 L770.08,94.01 L847.58,95.49 L847.58,92.49 L770.08,91.55 L744.25,88.71 L721,51.26 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M721,119.56 L744.25,143.25 L770.08,145.23 L847.58,147.25 L847.58,145.26 L770.08,143.42 L744.25,140.85 L721,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M721,119.56 L744.25,172.37 L770.08,173.42 L847.58,174.26 L847.58,173.1 L770.08,172.13 L744.25,170.37 L721,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M721,119.56 L744.25,171.37 L770.08,172.78 L847.58,173.68"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M721,119.56 L744.25,142.05 L770.08,144.33 L847.58,146.25"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M721,53.95 L744.25,90.03 L770.08,92.78 L847.58,93.99"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M705.5,219.5 L860.5,219.5"/>
+         <path fill="none" d="M705.5,186.5 L860.5,186.5"/>
+         <path fill="none" d="M705.5,153.5 L860.5,153.5"/>
+         <path fill="none" d="M705.5,119.5 L860.5,119.5"/>
+         <path fill="none" d="M705.5,86.5 L860.5,86.5"/>
+         <path fill="none" d="M705.5,52.5 L860.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M860.5,186.5 L705.5,186.5"/>
+     </g>
+     <g>
+      <clipPath id="clip23" clip-path="url(#clip1)">
+       <path d="M857.5,186.5 L857.5,210.5 L1016.5,210.5 L1016.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip23)">
+       <g stroke="#A5A5A5">
+        <path fill="none" d="M861.5,186.5 L861.5,189.5"/>
+        <path fill="none" d="M887.5,186.5 L887.5,189.5"/>
+        <path fill="none" d="M912.5,186.5 L912.5,189.5"/>
+        <path fill="none" d="M938.5,186.5 L938.5,189.5"/>
+        <path fill="none" d="M964.5,186.5 L964.5,189.5"/>
+        <path fill="none" d="M989.5,186.5 L989.5,189.5"/>
+        <path fill="none" d="M1015.5,186.5 L1015.5,189.5"/>
+        <path fill="none" d="M874.5,186.5 L874.5,192.5"/>
+        <path fill="none" d="M900.5,186.5 L900.5,192.5"/>
+        <path fill="none" d="M925.5,186.5 L925.5,192.5"/>
+        <path fill="none" d="M951.5,186.5 L951.5,192.5"/>
+        <path fill="none" d="M977.5,186.5 L977.5,192.5"/>
+        <path fill="none" d="M1002.5,186.5 L1002.5,192.5"/>
+       </g>
+       <g font-family="Tahoma">
+        <text stroke="none" x="874.5" y="194.5" dy="12.01" text-anchor="middle">0</text>
+        <text stroke="none" x="900.5" y="194.5" dy="12.01" text-anchor="middle">1</text>
+        <text stroke="none" x="925.5" y="194.5" dy="12.01" text-anchor="middle">2</text>
+        <text stroke="none" x="951.5" y="194.5" dy="12.01" text-anchor="middle">3</text>
+        <text stroke="none" x="977.5" y="194.5" dy="12.01" text-anchor="middle">4</text>
+        <text stroke="none" x="1002.5" y="194.5" dy="12.01" text-anchor="middle">5</text>
+       </g>
+      </g>
+     </g>
+     <g>
+      <clipPath id="clip24" clip-path="url(#clip1)">
+       <path d="M857.5,186.5 L857.5,210.5 L1016.5,210.5 L1016.5,186.5 z"/>
+      </clipPath>
+      <g clip-path="url(#clip24)"/>
+     </g>
+     <g fill="#FFFFFF">
+      <rect stroke="none" x="861.5" y="45.5" width="154" height="141"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip25" clip-path="url(#clip1)">
+        <path d="M860.5,44.5 L860.5,186.5 L1015.5,186.5 L1015.5,44.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip25)">
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#3DAE46">
+         <path d="M876.9,56.64 L900,91.36 L925.67,94.01 L1002.67,95.49 L1002.67,92.49 L925.67,91.55 L900,88.71 L876.9,51.26 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#D44958">
+         <path d="M876.9,119.56 L900,143.25 L925.67,145.23 L1002.67,147.25 L1002.67,145.26 L925.67,143.42 L900,140.85 L876.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g stroke-opacity="0.25" stroke="none" fill-opacity="0.25" fill="#4270DD">
+         <path d="M876.9,119.56 L900,172.37 L925.67,173.42 L1002.67,174.26 L1002.67,173.1 L925.67,172.13 L900,170.37 L876.9,119.56 z" fill-rule="evenodd"/>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#4270DD">
+          <path fill="none" d="M876.9,119.56 L900,171.37 L925.67,172.78 L1002.67,173.68"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#D44958">
+          <path fill="none" d="M876.9,119.56 L900,142.05 L925.67,144.33 L1002.67,146.25"/>
+         </g>
+        </g>
+        <g>
+         <g stroke-width="2" stroke="#3DAE46">
+          <path fill="none" d="M876.9,53.95 L900,90.03 L925.67,92.78 L1002.67,93.99"/>
+         </g>
+        </g>
+        <g stroke="#D7D7D7">
+         <path fill="none" d="M861.5,219.5 L1015.5,219.5"/>
+         <path fill="none" d="M861.5,186.5 L1015.5,186.5"/>
+         <path fill="none" d="M861.5,153.5 L1015.5,153.5"/>
+         <path fill="none" d="M861.5,119.5 L1015.5,119.5"/>
+         <path fill="none" d="M861.5,86.5 L1015.5,86.5"/>
+         <path fill="none" d="M861.5,52.5 L1015.5,52.5"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g stroke-linecap="square" stroke="#A5A5A5">
+      <path fill="none" d="M1015.5,45.5 L1015.5,186.5 L861.5,186.5"/>
+     </g>
+     <g>
+      <g>
+       <clipPath id="clip26" clip-path="url(#clip1)">
+        <path d="M1019.5,25.5 L1019.5,98.5 L1084.5,98.5 L1084.5,25.5 z"/>
+       </clipPath>
+       <g clip-path="url(#clip26)">
+        <text stroke="none" x="1021.5" y="39.5" dy="4.97">Quantile</text>
+        <g stroke-width="2" stroke="#4270DD" fill="none">
+         <path fill="none" d="M1021.5,59 L1041.5,59"/>
+        </g>
+        <text stroke="none" x="1044.5" y="58.5" dy="4.97">%25</text>
+        <g stroke-width="2" stroke="#D44958" fill="none">
+         <path fill="none" d="M1021.5,74 L1041.5,74"/>
+        </g>
+        <text stroke="none" x="1044.5" y="73.5" dy="4.97">%50</text>
+        <g stroke-width="2" stroke="#3DAE46" fill="none">
+         <path fill="none" d="M1021.5,89 L1041.5,89"/>
+        </g>
+        <text stroke="none" x="1044.5" y="88.5" dy="4.97">%75</text>
+       </g>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

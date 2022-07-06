@@ -1,0 +1,63 @@
+\startfirstchapter{Introduction}
+\label{chapter:introduction}
+
+\section{Motivation}
+
+The need for data compression, more specifically entropy coding, was introduced when television transmissions and mobile telephone services started becoming commercial as early as the 1940s \cite{Shannon1948Bell}. Then in the 1950s, with the birth of limited and expensive digital storage devices, researchers (such as David Huffman) have started to develop methods to minimize the redundancy of messages\cite{Huffman1952IRE}. Since then, many data compression schemes have been studied, proposed, and used in all kinds of data including text, audio, and video. With the rapid growth of computing power and the use of different compression schemes, we are now able to send and receive simultaneous real-time high-quality audio and video information in virtual group conferences held on platforms such as Zoom, Google Meet, Skype, etc.
+
+Despite all the mentioned advancements, having cheaper storage devices, and fast internet access, the need for consuming less storage and improving transfer latency is still ongoing. According to Speedtest Global Index, 72 countries out of 182 ($\sim 40\%$) have a slower than 25 Mbps median internet speed over a fixed broadband connection\cite{speedtest}. The 25 Mbps is FCC's recommended connection speed for telecommuting and virtual classrooms\cite{FCC_broadband_2011}. This statistic is even worse for mobile connections, i.e. 68 countries out of 141 ($\sim 48\%$). In addition to the speed, it has been reported that users mostly have a limited amount of download/upload capacity which requires them to pay per their usage. Having said that, especially during the pandemic of COVID-19, it was very difficult for the government and health organizations of these countries to enforce remote working and virtual classes. Hence, all such issues result in the investment of tech companies in the improvement of compression schemes to be able to provide services to more countries and to a wider range of people.
+
+\section{Virtual Music Performance}
+\label{sec:virtual-music-performance}
+
+Even though developed countries, with faster and unlimited internet connections, could support remote working and virtual classes during the pandemic of COVID-19, some types of virtual practices are still very difficult or even impossible\cite{bartlette2006effect,chafe2010effect}. One example of such practice is virtual music performances. Unlike a group audio call, in which people can still communicate with one second of latency, having even 100ms latency for a group to perform a music piece together can easily make them out of sync\cite{chafe2004effect,bartlette2006effect}. This is due to the fact that in a group audio call, one person usually waits and listens to another and then speaks when they hear silence. Having one second of latency simply means one second of extra silence between two speakers which is not annoying. In virtual music performance, however, everyone plays simultaneously and the activity of listening and playing happens at the same time. Therefore, the need for reducing the latency of audio is still in high demand and one of the approaches to achieve this reduction is by improving audio compression schemes.
+
+% \TODO{search jack trip}
+
+% \cite{rottondi2016overview}
+
+\section{Domain-Specific Audio Compression} 
+
+One approach to improve audio compression even further is to use a domain-specific scheme. Unlike the \textbf{MPEG Audio Layer III (MP3)} and \textbf{Advanced Audio Coding (AAC)} schemes that are designed to be general-purpose audio compression schemes, a domain-specific audio compression focuses on more restricted use cases. For example, in the virtual music performance scenario, an audio compression scheme which is specifically tailor designed for a single musical instrument can potentially achieve better compression, and consequently, less latency in transmission because the audio signal patterns are more limited and easy to recognize. 
+
+For example, a drum player can produce a limited number of sounds with the drum set that are typically repeated in  predictable patterns. We believe that an audio compression scheme can be specifically designed so that is able to understand and identify all such limited signals and rhythmic patterns and instead of sending repeating signals, should be able to simply refer to the known previously played audio signal. This can become more difficult for a more sophisticated musical instrument like a piano which can play any mixture of 88 different notes with different intensities and duration. In addition, for a musical instrument that can play continuous notes, like a violin or a cello, it would be much more difficult to find patterns.
+
+In this thesis, I will be investigating whether a domain-specific audio compression schema can be designed in order to improve the compression of music with repeating structure without introducing annoying perceptible differences.
+
+
+\section{Contributions}
+
+The main contributions of the thesis are: 
+
+
+\begin{itemize}
+\item A simplified perceptual audio compression scheme that is based on well-known schemes such as MP3 and AAC but that can be easily implemented and understood in order to explore how audio compression works and experiments variations and modifications without having to deal with the implementation complexities 
+of established audio coding algorithms. 
+
+\item A method for leveraging repetition in music to improve audio compression is described, implemented, and tested showing the potential of domain-specific audio compression. 
+
+\item For someone who is interested in evaluating audio compression schemes that leverage music repetition, an experimental methodology is proposed and applied using a 
+publicly available dataset. 
+
+\item For programmers who would like to explore the new audio compression scheme closely, the Python source code of the encoder, decoder, experiment, and figures are provided in a public GitHub repository \TODO{Cite} \TODO{say following the reproducibility MIR}.
+
+\item For someone who is interested to follow up on this thesis and investigate approaches for its improvements, some potential ideas for future works are provided in the final chapter.
+\end{itemize}
+
+\section{History of the Thesis}
+
+Entering the University of Victoria, following my previous experience and passion for Virtual Reality (VR) and Human-Computer Interaction, I had plans to work around the Music in Virtual Reality as the subject for my thesis. Sadly, with the start of the pandemic of COVID-19, it was very difficult to conduct user studies and potentially expose participants to the virus 
+as they would need to use expensive VR equipment that is not widely available. Therefore, I decided to choose my second life-long interest, audio compression, as my thesis without the need to run user studies.
+
+I grew up, experiencing the excitement of compressing my audio and video files to MP3 and MP4. As a curious child, I always wondered how this is possible and if someday, I could do the same. My curiosity grew more when I got older and started working in a video conferencing service provider company. There, I noticed how a carefully chosen audio and video encoder can affect the whole experience of a video conference, and how it plays a major part in a business to be built upon. So I found this opportunity to fulfil my curiosity at the University of Victoria by taking Data Compression courses, taking Directed Studies about Audio Compression Schemes, and working on Audio Compression Schemes leveraging repetition of tones for my thesis.
+
+\section{Thesis Structure}
+To help the reader understand the flow and structure of the thesis, the aim and expected contents of each one of the chapters are described below:
+
+\begin{description}
+\item[Chapter \ref{chapter:related}] points out some of the published research related to the subject of my thesis in subjects of audio \& video compression, evaluation of audio quality, network music performance, and repetition in sound source separation.
+\item[Chapter \ref{chapter:background}] describes some mathematics, techniques, and approaches for the background knowledge and empirical investigations that are required before proposing the new idea in the audio compression.
+\item[Chapter \ref{chapter:proposed}] explains the main idea of the new audio compression scheme, then it provides technical considerations and algorithmic implementations, and then it illustrates some results of its execution on a single well-known song.
+\item[Chapter \ref{chapter:Exp}] describes an experiment over a diverse music dataset. Results are reported using descriptive and inferential statistical analysis aiming to achieve a more generalizable understanding of the new compression scheme
+\item[Chapter \ref{chapter:concl}] provides an overview of the knowledge achieved from chapter \ref{chapter:Exp} and then, by referring to some of the mentioned research in chapter \ref{chapter:related}, some potential improvements are proposed that can be done in the future studies.
+\end{description}

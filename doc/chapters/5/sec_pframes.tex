@@ -1,0 +1,79 @@
+\section{Comparison of Compression Schemas}
+\label{sec:pframe-exp}
+
+It can be concluded from section \ref{sec:i-rates} that 2 seconds is a suitable value to use for the I-Rate parameter and we only use this constant value for the P-Frame schema. Now it is time to answer the main research question: i.e "Can the described P-Frame schema improve the compression of pieces of music with repeated instrumental tones without adding perceptible differences?". To study the answer, DVs are measured as described at the beginning of chapter \ref{chapter:Exp} with an additional 3-level IV named \textbf{Schema}:
+
+\begin{enumerate}
+\item\textbf{Lossless:} The base condition which saves raw MDCT output.
+\item\textbf{Only I-Frames:} The MDCT output with all I-Frames zero thresholds applied.
+\item\textbf{With P-Frames:} The proposed new compression scheme.
+\end{enumerate}
+
+\noindent Following sections are reports for each measured variable.
+
+\subsection{Audio Quality}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/input-peaq.svg}
+  \caption[Comparison of Schemas in Audio Quality amongst different types of audio]{Comparison of Schemas in Audio Quality amongst different types of audio. Audio Quality is measured using Objective Difference Grade (ODG) in Perceptual Evaluation of Audio Quality (PEAQ) (0 = Imperceptible, -1 = Perceptible, but not annoying)}
+  \label{fig:input-peaq}
+\end{figure}
+
+It can be seen in Figure \ref{fig:input-peaq} that lossless encoding has an ODG above zero (imperceptible) and very similar in the mixture ($M=.164, SD=.009$), vocals ($M=.151, SD=.015$), drums ($M=.149, SD=.03$), REPET's foreground ($M=.15, SD=.016$), and REPET's background ($M=.159, SD=.009$). 
+Similarly, all I-frame encoding is imperceptible with a slight decrease in audio quality of the mixture ($M=.152, SD=.035$), vocals ($M=.146, SD=.017$), drums ($M=.113, SD=.088$), REPET's foreground ($M=.14, SD=.022$), and REPET's background ($M=.146, SD=.039$). 
+However, with P-frame encoding can have an ODG below zero depending on the audio type with even more decrease in the mixture ($M=.114, SD=.137$), vocals ($M=-.46, SD=.645$), drums ($M=-.161, SD=.479$), REPET's foreground ($M=-.065, SD=.194$), and REPET's background ($M=.098, SD=.165$). 
+
+Running further statistical analysis,  within-subject ANOVA showed that the audio quality is significantly affected by the type of audio  ($F(4,196)=24.4, p<.000, \eta_{p}^{2}=.332$), the used schema ($F(2,98)=56.4, p<.000, \eta_{p}^{2}=.535$), and the interaction between them ($F(8,392)=25.1, p<.000, \eta_{p}^{2}=.339$).
+Tukey HSD post-hoc showed that the audio quality for vocals ($M=-.054, SD=.469$) was significantly lower than mixture ($M=.144, SD=.083$), drums ($M=.033, SD=.313$), REPET's foreground ($M=.075, SD=.15$), and REPET's background ($M=.134, SD=.1$), (all $p$s $<.007$).
+Beside that, the audio quality for drums was significantly lower than the mixture, and REPET's background (all $p$s $<.001$).
+It is important to mention that Tukey HSD showed no significant reduction of audio quality for having P-frames ($M=-.06, SD=.407$), all I-frames ($M=.139, SD=.049$), and lossless ($M=.155, SD=.018$).
+
+In summary, the results confirmed that having P-Frames can significantly reduce the audio quality on vocals, and not the background sounds such as drums.
+
+\subsection{Compression Ratio}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/input-compression-ratio.svg}
+  \caption{Comparison of Schemas in Compression Ratio amongst different types of audio}
+  \label{fig:input-compression}
+\end{figure}
+
+It can be seen in Figure \ref{fig:input-compression} that lossless encoding has a very similar compression ratio in the mixture ($M=.993, SD=.019$), REPET's foreground ($M=.91, SD=.026$), and REPET's background ($M=.917, SD=.021$).
+However, lossless encoding has a lower compression ratio in the vocals ($M=.717, SD=.182$), and drums ($M=.85, SD=.123$).
+Compared to the lossless encoding, fully I-frame encoding reduced the compression ratio in mixture ($M=.906, SD=.023$), vocals ($M=.704, SD=.178$), drums ($M=.836, SD=.124$), REPET's foreground ($M=.839, SD=.04$), and REPET's background ($M=.893, SD=.021$).
+Having P-frames reduced the compression ratio even further in mixture ($M=.873, SD=.035$), vocals ($M=.594, SD=.174$), drums ($M=.755, SD=.125$), REPET's foreground ($M=.774, SD=.054$), and REPET's background ($M=.893, SD=.022$).
+
+Running further statistical analysis,  within-subject ANOVA showed that compression ratio is significantly affected by the used input audio type ($F(4,196)=51.8, p<.000, \eta_{p}^{2}=.514$), the used schema ($F(2,98)=164, p<.000, \eta_{p}^{2}=.77$), and the interaction between them ($F(8,392)=20.3, p<.000, \eta_{p}^{2}=.293$).
+Tukey HSD post-hoc showed that the compression ratio with P-frame encoding ($M=-.782, SD=.133$) was significantly lower than the compression ratio for fully I-frame encoding ($M=.836, SD=.122, p<.0001$), while the fully I-frame encoding was not significantly lower than the lossless encoding ($M=.033, SD=.313, p=1$).
+As for audio inputs, Tukey HSD post-hoc showed that the compression ratio for vocals ($M=.672, SD=.185$) was significantly lower than the compression ratio for mixture ($M=.904, SD=.036$), drums ($M=.814, SD=.13$), REPET's foreground ($M=.841, SD=.07$), and REPET's background ($M=.888, SD=.039$).
+Beside that, the compression ratio for drums was significantly lower than the compression ratio for mixture, REPET's foreground, and REPET's background (all $p$s $<.0005$).
+However, the compression ratio for drums was not significantly different than REPET's foreground ($p=154$). Similarly, the compression ratio for the mixture was not significantly different than the compression ratio for REPET's background ($p=696$).
+
+In summary, the results confirmed that having P-Frames can significantly reduce the compression ratio.
+Furthermore, the compression ratio is highly dependent on the type of input audio. Specifically, having more silence in the audio input will reduce the compression ratio.
+This explains the reason that vocals and drums audio inputs have better compression ratios.
+
+\subsection{Desirability}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/input-desirable.svg}
+  \caption{Comparison of Compression Schemas in Desirability amongst different types of audio}
+  \label{fig:input-desirable}
+\end{figure}
+
+It can be seen in Figure \ref{fig:input-desirable} that desirability is not much being reduced in mixture audio input with lossless encoding ($M=.044, SD=.003$), all I-frame encoding ($M=.042, SD=.01$), and with P-frame encoding ($M=.032, SD=.041$).
+Similarly, in REPET's background audio, the desirability is not much being reduced with lossless encoding ($M=.043, SD=.003$), all I-frame encoding ($M=.041, SD=.011$), and with P-frame encoding ($M=.028, SD=.051$).
+However, desirability is reduced in REPET's foreground audio with lossless encoding ($M=.041, SD=.005$), all I-frame encoding ($M=.042, SD=.007$), and with P-frame encoding ($M=-.022, SD=.065$).
+Desirability is reduced even more in drums audio with lossless encoding ($M=.045, SD=.012$), all I-frame encoding ($M=.034, SD=.027$), and with P-frame encoding ($M=-.07, SD=.205$).
+Desirability is reduced the most in vocals audio input with lossless encoding ($M=.059, SD=.033$), all I-frame encoding ($M=.058, SD=.03$), and with P-frame encoding ($M=-.241, SD=.36$).
+
+Running further statistical analysis,  within-subject ANOVA showed that desirability is significantly affected by the used input audio type ($F(4,196)=16.3, p<.000, \eta_{p}^{2}=.25$), the used schema ($F(2,98)=46.7, p<.000, \eta_{p}^{2}=.488$), and the interaction between them ($F(8,392)=21.9, p<.000, \eta_{p}^{2}=.309$).
+Tukey HSD post-hoc showed that the desirability was significantly reduced in vocals with P-frame encoding and in drums with P-frame encoding compared to all other cases (all $p$s $<.0008$). However, the desirability of having P-frames is not significantly reduced in the mixture, REPET's foreground, and REPET's background.
+
+In summary, the results confirmed that having P-frames can be significantly undesirable in vocals. Having P-frames can also significantly reduce desirability in drums but the mean difference shows it is not as undesirable as it is for vocals.
+
+\section{Conclusions of Experiments} 
+
+% \TODO{Write a summary of the main conclusions of the experiments - essentially repeat in condensed form the In summary sentences of the subsections in the chapter} 
+
+To summarize, it can be concluded from section \ref{sec:i-rates} that 2 seconds is a suitable value to use for the I-Rate parameter for the P-Frame schema. Afterwards, from section \ref{sec:pframe-exp} it can be concluded that having P-Frames can significantly reduce the Audio Quality and Desirability on vocal tracks, while the background sound is not affected as much. Furthermore, having P-Frames can have a significant improvement effect on the compression ratio by 3 to 8 percent.

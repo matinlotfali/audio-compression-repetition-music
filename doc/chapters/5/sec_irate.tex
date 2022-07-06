@@ -1,0 +1,96 @@
+\section{Effects of I-Rate on the Compression Scheme}
+\label{sec:i-rates}
+
+As described in section \ref{sec:idea}, the I-Rate parameter is the rate of forced I-Frames that P-Frames are not allowed to refer to any frame before them. A larger number in the I-Rate means P-Frames are allowed to look more back in time to find a suitable referenced frame to reuse. Additionally, it means more comparisons and more CPU time. In this section, I try to answer the question: What is the suitable amount of time for P-Frames to look back? My hypothesis is that, in the worst case, beats are repeated once per second. Therefore, 2 seconds for the I-Rate should be sufficient and there is no point in going back more in time to find a reference.
+
+To test this hypothesis, DVs are measured as described at the beginning of chapter \ref{chapter:Exp} with an additional 4-level IV named I-Rates: 0.1 of a second, 1 second, 2 seconds, and 5 seconds. The following sections are reports for each measured variable.
+
+\subsection{Audio Quality}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/irate-peaq.svg}
+  \caption[Comparison of Audio Quality in different types of audio and I-Rates.]{Comparison of Audio Quality in different types of audio and I-Rates. Audio Quality is measured using Objective Difference Grade (ODG) in Perceptual Evaluation of Audio Quality (PEAQ) (0 = Imperceptible, -1 = Perceptible, but not annoying)}
+  \label{fig:irate-peaq}
+\end{figure}
+
+It can be seen in Figure \ref{fig:irate-peaq} that mixture audio input is imperceptible in I-Rates of 0.1 of a second ($M=.15, SD=.037$), 1 second ($M=.125, SD=.099$), 2 seconds ($M=.114, SD=.137$), and 5 seconds ($M=.105, SD=.166$).
+Similarly, REPET's background is imperceptible in I-Rates of 0.1 of a second ($M=.143, SD=.039$), 1 second ($M=.112, SD=.098$), 2 seconds ($M=.098, SD=.165$), and 5 seconds ($M=.089, SD=.187$).
+Identically, the sum audio input is imperceptible in I-Rates of 0.1 of a second ($M=.148, SD=.038$), 1 second ($M=.121, SD=.107$), 2 seconds ($M=.111, SD=.148$), and 5 seconds ($M=.104, SD=.167$).
+In REPET's foreground, however, the audio quality is slightly reduced with the increment of I-Rate from 0.1 of a second ($M=.092, SD=.064$), to 1 second ($M=-.036, SD=.185$), 2 seconds ($M=-.065, SD=.194$), and 5 seconds ($M=-.107, SD=.25$).
+In drums audio, the audio quality is also slightly reduced with an I-Rate of 0.1 of a second ($M=.051, SD=.187$), to 1 second ($M=-.111, SD=.41$), and 2 seconds ($M=-.161, SD=.479$). Then it stays the same for the I-Rate of 5 seconds ($M=-.162, SD=.464$).
+Most noticeably, the audio quality is highly reduced with the increment of I-Rate from 0.1 of a second ($M=.014, SD=.18$), to 1 second ($M=-.349, SD=.513$), 2 seconds ($M=-.46, SD=.645$), and 5 seconds ($M=-.603, SD=.805$).
+
+Running further statistical analysis,  within-subject ANOVA showed that the audio quality is significantly affected by the used input audio type ($F(5,245)=31.4, p<.000, \eta_{p}^{2}=.39$), the I-Rate ($F(3,147)=44.8, p<.000, \eta_{p}^{2}=.477$), and the interaction between them ($F(15,735)=18.7, p<.000, \eta_{p}^{2}=.276$).
+Tukey HSD post-hoc showed that the audio quality is significantly higher in I-Rate of 0.1 of a second ($M=.1, SD=.122$), as compared to other used I-Rates (all $p$s $<.001$) while it showed no significant reduction of audio quality for the I-Rate of 1 second ($M=-.023, SD=.333$), 2 seconds ($M=-.06, SD=.407$), and 5 seconds ($M=-.096, SD=.479$). In vocals specifically, Tukey HSD showed no significant reduction of audio quality between I-Rates of 1 second and 2 seconds, and I-Rates of 2 seconds and 5 seconds. However, the audio quality between I-Rates of 1 second and 5 seconds are significantly lowered ($p=.011$).
+
+In summary, the results confirmed that, except for vocals, the lossy compression remains imperceptible with any amount of I-Rate and it stabilizes when it is higher than 1 second.
+
+\subsection{Compression Ratio}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/irate-compression-ratio.svg}
+  \caption{Comparison of Compression Ratio in different types of audio and I-Rates}
+  \label{fig:irate-compression-ratio}
+\end{figure}
+
+It can be seen in Figure \ref{fig:irate-compression-ratio} that mixture audio input is slightly compressed in I-Rate of 0.1 of a second ($M=.898, SD=.025$), and a bit more in 1 second ($M=.875, SD=.034$), 2 seconds ($M=.873, SD=.035$), and 5 seconds ($M=.871, SD=.036$).
+Similarly, drum audio input is slightly compressed in I-Rate of 0.1 of a second ($M=.804, SD=.105$), and a bit more in 1 second ($M=.761, SD=.122$), 2 seconds ($M=.755, SD=.125$), and 5 seconds ($M=.751, SD=.126$). 
+Identically, REPET's foreground audio input is slightly compressed in I-Rate of 0.1 of a second ($M=.834, SD=.042$), and a bit more in 1 second ($M=.78, SD=.053$), 2 seconds ($M=.774, SD=.054$), and 5 seconds ($M=.768, SD=.055$).
+As for REPET's background, the audio input is slightly compressed in I-Rate of 0.1 of a second ($M=.88, SD=.027$), and a bit more in 1 second ($M=.855, SD=.037$), 2 seconds ($M=.852, SD=.038$), and 5 seconds ($M=.85, SD=.039$).
+The sum audio input is also slightly compressed in I-Rate of 0.1 of a second ($M=.859, SD=.032$), and a bit more in 1 second ($M=.847, SD=.037$), 2 seconds ($M=.846, SD=.037$), and 5 seconds ($M=.844, SD=.038$).
+Most noticeably, vocal audio input is compressed more than the other with the increment of I-Rate from 0.1 of a second ($M=.643, SD=.17$), to 1 second ($M=.598, SD=.174$), 2 seconds ($M=.594, SD=.174$), and 5 seconds ($M=.589, SD=.174$).
+
+Running further statistical analysis,  within-subject ANOVA showed that Compression Ratio is significantly affected by the used input audio type ($F(5,245)=72.4, p<.000, \eta_{p}^{2}=.596$), the I-Rate ($F(3,147)=292, p<.000, \eta_{p}^{2}=.856$), and the interaction between them ($F(15,735)=48, p<.000, \eta_{p}^{2}=.495$).
+Tukey HSD post-hoc showed that the compression is significantly worse in I-Rate of 0.1 of a second ($M=.82, SD=.12$), as compared to other used I-Rates (all $p$s $<.001$) while it showed no significant improvement of compression for the I-Rate of 1 second ($M=-.786, SD=.131$), 2 seconds ($M=.782, SD=.133$), and 5 seconds ($M=.779, SD=.134$). 
+In vocals specifically, Tukey HSD showed no significant reduction of audio quality in I-Rates of 0.1 of a second, 1 second, 2 seconds and 5 seconds (all $p$s $>.319$).
+
+In summary, the results confirmed that the Compression Ratio doesn't improve with I-Rates higher than 1 second.
+
+\subsection{Desirability}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/irate-desirable.svg}
+  \caption{Comparison of Desirability in different types of audio and I-Rates}
+  \label{fig:irate-desirable}
+\end{figure}
+
+It can be seen in Figure \ref{fig:irate-desirable} that mixture audio input is the most desirable with I-Rate of 0.1 of a second ($M=.042, SD=.01$), 1 second ($M=.035, SD=.029$), 2 seconds ($M=.032, SD=.041$), and 5 seconds ($M=.03, SD=.05$).
+Similarly, REPET's background is highly desirable with I-Rates of 0.1 of a second ($M=.041, SD=.011$), 1 second ($M=.032, SD=.034$), 2 seconds ($M=.028, SD=.051$), and 5 seconds ($M=.026, SD=.059$).
+Identically, the sum audio input is desirable with I-Rates of 0.1 of a second ($M=.043, SD=.011$), 1 second ($M=.036, SD=.033$), 2 seconds ($M=.032, SD=.045$), and 5 seconds ($M=.031, SD=.051$).
+In REPET's foreground, however, the increment of I-Rate makes the result slightly less desirable from 0.1 of a second ($M=.028, SD=.02$), to 1 second ($M=-.012, SD=.063$), 2 seconds ($M=-.022, SD=.065$), and 5 seconds ($M=-.036, SD=.086$).
+In drums audio, Desirability is also being slightly reduced with an I-Rate of 0.1 of a second ($M=.012, SD=.068$), to 1 second ($M=-.051, SD=.173$), and 2 seconds ($M=-.07, SD=.205$). Then it stays almost the same for the I-Rate of 5 seconds ($M=-.066, SD=.18$).
+Most noticeably, in vocals, the increment of I-Rate makes the algorithm least desirable from 0.1 of a second ($M=.006, SD=.072$), to 1 second ($M=-.205, SD=.368$), 2 seconds ($M=-.241, SD=.36$), and 5 seconds ($M=-.342, SD=.563$).
+
+Running further statistical analysis,  within-subject ANOVA showed that audio quality is significantly affected by the used input audio type ($F(5,245)=21.8, p<.000, \eta_{p}^{2}=.308$), the I-Rate ($F(3,147)=28.5, p<.000, \eta_{p}^{2}=.368$), and the interaction between them ($F(15,735)=12.6, p<.000, \eta_{p}^{2}=.205$).
+Tukey HSD post-hoc showed that the Desirability is significantly higher in I-Rate of 0.1 of a second ($M=.029, SD=.044$), as compared to other used I-Rates (all $p$s $<.001$) while it showed no significant reduction of Desirability for the I-Rate of 1 second ($M=-.028, SD=.189$), 2 seconds ($M=-.04, SD=.198$), and 5 seconds ($M=-.06, SD=.278$). In vocals specifically, Tukey HSD showed no significant reduction of Desirability between I-Rates of 1 second and 2 seconds, and I-Rates of 2 seconds and 5 seconds. However, the I-Rate of 5 seconds is significantly less desired than the I-Rate of 1 second ($p=.02$).
+
+In summary, the results confirmed that, except for vocals, the lossy compression remains desirable with any amount of I-Rate and it stabilizes when it is higher than 1 second.
+
+\subsection{P-Ratio}
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/irate-pratio.svg}
+  \caption{Comparison of P-Ratios in different types of audio and I-Rates}
+  \label{fig:irate-pratio}
+\end{figure}
+
+It can be seen in figure \ref{fig:irate-pratio} that in mixture audio input, P-Ratio starts with a lower value in 0.1 of a second ($M=.737, SD=.014$), and then it increases in 1 second ($M=.961, SD=.019$), 2 seconds ($M=.972, SD=.019$), and 5 seconds ($M=.979, SD=.019$).
+Similarly in REPET's foreground, P-Ratio starts with a lower value in 0.1 of a second ($M=.72, SD=.019$), and then it increases in 1 second ($M=.938, SD=.025$), 2 seconds ($M=.949, SD=.026$), and 5 seconds ($M=.956, SD=.026$).
+Identically in both REPET's background and the sum audio input, P-Ratio also starts with a lower value in 0.1 of a second ($M=.737, SD=.015$), and then it increases in 1 second ($M=.96, SD=.019$), 2 seconds ($M=.972, SD=.019$), and 5 seconds ($M=.978, SD=.02$).
+In drums audio input, P-Ratio was slightly lower compared to the former in 0.1 of a second ($M=.687, SD=.075$), and then it increases in 1 second ($M=.895, SD=.098$), 2 seconds ($M=.906, SD=.099$), and 5 seconds ($M=.912, SD=.1$).
+Most noticeably in vocals, P-Ratio was highly lower compared to the former in 0.1 of a second ($M=.58, SD=.155$), and then it increases in 1 second ($M=.756, SD=.202$), 2 seconds ($M=.765, SD=.204$), and 5 seconds ($M=.77, SD=.206$).
+
+Running further statistical analysis,  within-subject ANOVA showed that P-Ratio is significantly affected by the used input audio type ($F(5,245)=40.6, p<.000, \eta_{p}^{2}=.453$), the I-Rate ($F(3,147)=20263, p<.000, \eta_{p}^{2}=.998$), and the interaction between them ($F(15,735)=40.6, p<.000, \eta_{p}^{2}=.453$).
+Tukey HSD post-hoc showed that P-Ratio is significantly lower in I-Rate of 0.1 of a second ($M=.7, SD=.09$), as compared to other used I-Rates (all $p$s $<.001$) while it showed no significant improvement for the I-Rate of 1 second ($M=.912, SD=.118$), 2 seconds ($M=.923, SD=.119$), and 5 seconds ($M=.929, SD=.12$). Moreover, Tukey HSD showed that P-Ratio is significantly lower in vocals ($M=.718, SD=.207$), as compared to other used I-Rates (all $p$s $<.001$) while it showed no significant change for the mixture ($M=-.912, SD=.103$), drums ($M=.85, SD=.132$), REPET's foreground ($M=.891, SD=.102$), REPET's background ($M=.912, SD=.103$), and the sum ($M=.912, SD=.103$).
+
+In summary, the results confirmed that, except for vocals, the lossy compression can find P-Frames with any amount of I-Rate and it stabilizes when it is higher than 1 second.
+
+% \subsection{Reference Distance}
+
+% \begin{figure}[ht]
+%   \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap5/irate-quantiles.svg}
+%   \caption{Comparison of Reference Distances in different types of audio and I-Rates}
+%   \label{fig:irate-quantiles}
+% \end{figure}
+
+% \TODO{Text needed for reference distance} 

@@ -1,0 +1,85 @@
+\section{A Simple Lossy Audio Compression Scheme}
+\label{sec:simple}
+
+In order to better understand the building blocks of perceptual lossy audio compression, a simple stream-lined lossy audio compression scheme 
+was designed and implemented. This allowed more easy experimentation without having to deal with all the implementation complexities of a fully developed audio coder while still retaining the main characteristics of such audio coders. 
+
+Once the MDCT is applied to an audio signal, the resulting data is typically encoded using some form of entropy-based encoding in order to compress it while still retaining the critical and perceptual parts of the signal. In section \ref{sec:audio-compression}, many different approaches for such encoding were introduced. These techniques are carefully designed and modified to find correct parameters that would keep the compressed difference imperceptible. Unfortunately, I didn't have enough time to go through each one of the steps individually to be able to implement a full-blown MP3 or AAC encoder. Instead, I decided to implement  multiple simple proof-of-concepts steps and report the Compression Size Ratio and Audio Quality of each step. For checking the Audio Quality, unlike MP3 and AAC that recruited humans for scoring, I used the ODG in the PEAQ method (described in section \ref{sec:peaq}). My aim during such streamlined steps was to modify frequency bins so that when $M$ is given to a standard DEFLATE algorithm, I could achieve a better compression ratio. It reasonable to assume that any observed differences in compression ratios in the streamlined scheme would most likely result in similar improvements. 
+
+The outcome of each step is shown in Table \ref{tab:piano-lossy-steps}.
+
+\begin{description}
+    \item[Step 1:] Thanks to Nils Werner's MDCT Python package\cite{werner2020mdct}, I had no problem getting the coefficients matrix ($M$). The MDCT function receives raw wave audio signals ($W$) and returns the matrix of coefficients with 512 frequency bins per frame in the time domain ($t$). It is important to mention that in Python, each element of $W$ is 16-bits and the element size of $M$ is 64-bits. Even though it is nice to have high precision, storing the matrix would require a lot more space compared to $W$. Therefore, I changed the data type of $M$ back to 16-bit numbers. As a result of this step, I achieved only 91\% of the original size while changes in the decoded sound quality were imperceptible.
+    
+    \item[Step 2] One of the most simple techniques that can improve the compression ratio, is to zero out all high frequencies. It was mentioned earlier that human ears can not perceive extreme high frequencies. This frequency limit is different for each individual, and different lossy audio compression schemes have chosen different parameters and utilize more complex psychoacoustic models. Instead, as a simple approximation I chose to zero out half of the frequency bins in each time frame (from bin 250 to 511). As a result of this step, I simply achieved 46.8\% of the original size (exactly half of Step 1) while changes in the decoded sound quality were still imperceptible. Obviously, if I was using a more complex audio signal (like a voice), I would have removed many critical parts of the audio and the decoded sound quality would most probably be perceptible. However, for a simple audio signal such as an acoustic piano, this step seems to be suitable.
+    
+    \item[Step 3] Another simple technique to improve the compression ratio, is to remove decimal points by utilizing  quantization. It was already mentioned that initially, the matrix $M$ has been reduced from 64-bit floating-point numbers (52 decimal digits) to 16-bit floating-point numbers (10 decimal digits) without any perceptible damage. I believe human ears are still not able to perceive that level of details and they most probably consider two signals of 0.3211 and 0.3212 amplitudes as similar. I personally chose to round all numbers in the matrix $M$ to 3 digits of precision. As a result of this step, I achieved 15.4\% of the original size (almost one-third of Step 2). However, such careless modification was slightly perceptible in the decoded audio quality. Hearing the differences is difficult and when noticed, it was not annoying.
+    
+    \item[Step 4] The last simple technique to improve the compression ratio, is to remove frequencies that have a very low amplitude. I believe human ears are not able to perceive subtle and silent noises like signals of 0.001 amplitudes. So I personally chose to zero out and threshold all numbers in the matrix $M$ that are lower than 0.01 amplitude. As a result of this step, I achieved 6.6\% of the original size (almost one-third of Step 3). Obviously, such careless modification was more perceptible in the decoded audio quality. Even though tones and the melody being played on the piano are still perceivable in the decoded signal, one can get slightly annoyed when the raw and the decoded signals are compared together. This means many critical audio signals were removed despite winning over the output sizes of MP3 and AAC encoders.
+    
+    \item[Step 5] Finally, we need to apply a classic Run-Length encoding and Huffman coding on the matrix $M$. Gladly, Numpy Python Package\cite{harris2020array} already has implemented the DEFLATE algorithm in its \verb|savez_compressed| function. The function creates a compressed file with \verb|npz| extension which can later be loaded with Numpy's \verb|load| function. Note that other techniques can be used to write a compressed output. But I used this function for its simplicity. To report the outcome of each of the above steps in table \ref{tab:piano-lossy-steps}, I repeated Step 5 so that I could check the relative improvement of the compression size. But for the final outcome of my improvised simple encoding scheme, it can only be used once as the last step. Algorithm \ref{alg:simple-encoder} is the pseudo-code of the encoding scheme.
+\end{description}
+
+\begin{algorithm}
+\caption{A simple lossy audio compression scheme}\label{alg:simple-encoder}
+\begin{algorithmic}
+\Function{Encoder}{$W$}
+\State $M_{t \times b} \gets \Call{MDCT}{W}$ \Comment{Step 1: Transformation}
+\\
+\State $M \gets \begin{cases}
+0 , & \text{for all $b>250$} \\
+M , & \text{otherwise}
+\end{cases}$ \Comment{Step 2: High Frequency Cut}
+\\
+\State $M \gets \lfloor M \times 10^3 \rfloor \times 10^{-3}$ \Comment{Step 3: Round Decimals}
+\\
+\State $M \gets \begin{cases}
+0 , & \text{if $|M|<10^{-3}$} \\
+M , & \text{otherwise}
+\end{cases}$ \Comment{Step 4: Zero Threshold}
+\\
+\State \Return \Call{Deflate}{$M$}
+\EndFunction
+\\
+\Function{Decoder}{$Z$}
+\State $M_{t \times b} \gets$ \Call{Deflate$^{-1}$}{$Z$}
+\State \Return \Call{MDCT$^{-1}$}{$M$}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{>{\centering\arraybackslash}m{1.55cm}}
+\begin{table}[ht]
+\centering
+\begin{tabularx}{\linewidth}{|s|Y|Y|Y|Y|}
+\hline
+& Step 1 & Step 2 & Step 3 & Step 4 \\
+& Only MDCT & High Freq. Cut & Dec. Round & Zero Threshold \\
+\hline
+Size Ratio & $91.1\%$ & $46.8\%$ & $15.4\%$ & $6.66\%$ \\
+\hline
+MDCT &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/mdct1.svg}}}$ &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/mdct2.svg}}}$ &       $\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/mdct3.svg}}}$ &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/mdct4.svg}}}$ \\
+iMDCT &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/imdct1.svg}}}$ &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/imdct2.svg}}}$ &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/imdct3.svg}}}$ &
+$\vcenter{\hbox{\includesvg[width=\linewidth]{Figures/chap3/lossy/imdct4.svg}}}$ \\
+\hline
+\multirow{3}{1.55cm}{\centering Audio Quality (ODG)} & $0.122$ & $0.067$ & $-1.097$ & $-2.138$ \\
+& Imperceptible & Imperceptible & Perceptible, Not Annoying & Slightly Annoying \\
+\hline
+\end{tabularx}
+\caption{Steps of lossy audio compression using MDCT on a recording of an acoustic piano playing DEFGAGFEF tones}
+\label{tab:piano-lossy-steps}
+\end{table}
+
+\section{Summary}
+\label{sec:summary_background}
+
+In this chapter, the main building blocks behind perceptual audio compression and audio quality evaluation were described. 
+In addition, we discussed sound sound separation using Non-Negative Matrix Factorization and repeating musical structure. Finally, a simplified audio compression algorithms that resembles more complicated existing algorithms was described. This simplified algorithm is extended and tuned to leverage repeating structure. It is the main topic of this thesis and described in Chapter \ref{chapter:proposed}.  
+

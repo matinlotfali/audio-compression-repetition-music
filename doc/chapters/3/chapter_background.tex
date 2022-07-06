@@ -1,0 +1,154 @@
+\startchapter{Background and Empirical Investigations}
+\label{chapter:background}
+
+In this chapter, I will be describing topics that are 
+important for understanding the main ideas behind this thesis. This background material was crucial for me 
+to learn well and it was acquired through courses, 
+directed studies, and empirical investigations. In each section, the necessary background in terms of mathematics, techniques, and approaches is presented targeting a reader 
+who is not necessarily familiar with audio compression. 
+
+
+\section{Fourier Transformation (FT)}
+\label{sec:fourier}
+
+The Fourier Transform is fundamental in audio signal processing. Raw audio signals consist of waves similar to figure \ref{fig:idct} that are difficult (sometimes impossible) to interpret and process without transforming into the frequency domain. The Fourier Transform is one of the most well-known initial steps for processing audio signals. A \textbf{Fourier Transform (FT)} decomposes functions depending on time into functions depending on frequency. It is based on the Fourier Series expansion shown in equation \ref{eq1:fourier-series}, It uses an integral (or "continuous sum") that exploits properties of sine and cosine (with period $P$) to recover the amplitude ($A$) and phase ($\varphi$) of each sinusoid in a Fourier series (Equation \ref{eq1:fourier-series}). The inverse Fourier transform recombines these waves using a similar integral to reproduce the original function.
+
+\begin{equation}
+\label{eq1:fourier-series}
+s_{\scriptscriptstyle N}(t)={\frac {A_{0}}{2}}+\sum _{n=1}^{N}A_{n}\cdot \cos \left({\tfrac {2\pi }{P}}nt-\varphi _{n}\right)
+\end{equation}
+
+In digital signal processing, the \textbf{Discrete Fourier Transform (DFT)} converts a finite sequence of equally-spaced samples of a function into a same-length sequence of equally-spaced samples of the \textbf{Discrete-Time Fourier Transform (DTFT)}, which is a complex-valued function of frequency. Focusing on real values only, the \textbf{Discrete Cosine Transform (DCT)} is a widely used transformation technique in signal processing and data compression \cite{Ahmed1974DCT}. For example, figure \ref{fig:idct} shows a sum of cosine waves at 10, 20, 30, 40, and 50 Hz (equation \ref{eq1:sum-five-freq}) which is difficult to process and store. Figure \ref{fig:dct} is the DCT of the same function which clearly shows its compression potential by having many zeroes.
+
+\begin{equation} 
+\label{eq1:sum-five-freq}
+A(t)=\sum_{n=1}^{5}n\cos(nwt),\quad w=10\times2\pi
+\end{equation}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/dct/idct.svg}
+    \caption{Raw Audio Signal}
+    \label{fig:idct}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/dct/dct.svg}
+    \caption{Discrete Cosine Transform}
+    \label{fig:dct}
+\end{subfigure}
+\caption{Sum of cosine waves at 10, 20, 30, 40, and 50 Hz}
+\label{fig:dct-idct}
+\end{figure}
+
+Fourier transforms can also treat non-periodic functions as periodic with an infinite period. This can generate approximate frequency domain representations of non-periodic functions, allowing a waveform to be converted between its time-domain representation and its frequency domain representation. One realistic example can be seen in figure \ref{fig:piano-wav-spec} which shows a recording of an acoustic piano which plays DEFGAGFEF tones in a raw waveform (\ref{fig:piano-wav}) and a heat map of the time-frequency domain, a.k.a Audio Spectrogram (\ref{fig:piano-spec}).
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{0.49\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/dct/PianoWav.svg}
+    \caption{Raw Audio Recording}
+    \label{fig:piano-wav}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.49\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/dct/PianoSpec.svg}
+    \caption{Audio Spectrogram}
+    \label{fig:piano-spec}
+\end{subfigure}
+\caption{A recording of an acoustic piano playing DEFGAGFEF tones}
+\label{fig:piano-wav-spec}
+\end{figure}
+
+\section{Non-Negative Matrix Factorisation}
+\label{sec:nmf}
+
+During our initial investigations on instrument-specific audio compression schemes we explore sound source 
+separation and transcription approaches based on Non-Negative Matrix Factorisation (NMF). NMF factorizes a matrix $V$ into two matrices $W$ and $H$ without any negative elements. When used in MIR, these matrices are spectrograms or some other form of time-frequency representation. 
+
+The relationship between these three matrices is shown in the equation \ref{eq1:nmf}. One of the applications of NMF in digital audio processing is that when the output of FT of audio containing repeating tones, as a matrix consisting of frequencies as rows and time as columns ($V_{f\times t}$), is provided to this algorithm with the right number of extraction tones ($n$), it will generate a matrix containing the frequencies of each tone ($W_{f\times n}$) and a matrix containing the activation time of each tone ($H_{n\times t}$). Multiplying the tones and activation matrices will recreate a matrix similar to $V$. Saving the $W$ and $H$ matrices will consume less space as compared to saving the $V$ and it has the potential to be used as a compression scheme.
+
+\begin{equation} 
+\label{eq1:nmf}
+f\big(V_{f\times t}\quad,\quad n\big)\quad=\quad W_{f\times n} H_{n\times t} \quad\simeq\quad V_{f\times t}
+\end{equation}
+
+So to try the scheme, using LibRosa in Python\cite{mcfee2015librosa}, I provided 12 seconds of acoustic piano sound (similar to figure \ref{fig:piano-spec}) to DFT to obtain a spectrogram matrix $V_{2048\times 572}$. Then NMF was applied using the {\it decompose} function from the {\it librosa} library with $n=15$ 
+to generate two matrices of dimensions $W_{2048\times 15}$ and $H_{15\times 572}$. This means the total number of elements to save after the factorization would be 39,300 as compared to 1,171,456 elements after the DFT ($Ratio=3.35\%$). This would be a significant improvement in compression ratio compared to MP3 ($Ratio=15.9\%$). However, listening to the reconstructed $V$ was very annoying ($ODG=-3.793$). Using $n=150$, listening to the reconstructed $V$ was still very annoying ($Ratio=33.5\%, ODG=-3.793$). This means that to factorize two matrices of tones and activations, many important pieces of audio are removed due to careless approximations of the NMF approach.
+The {\bf Objective Difference Grade} ODG is a way to 
+automatically computed the perceived quality of an audio signal and is explained in the section \ref{sec:peaq}. 
+Although the initial investigation of using an NMF-based approach for audio compression was not successful, it provided insights that led to the development of the proposed algorithm. 
+
+\section{Perceptual Evaluation of Audio Quality}
+\label{sec:peaq}
+
+Perceptual Evaluation of Audio Quality (PEAQ) \cite{peaq} is a standardized approach used for objective measurements of perceived audio quality, and is based on generally accepted psycho acoustic principles. The overall goal of this algorithm is to obtain a quality comparison measure between two audio files, one as a reference and one decoded from the compressed version of the audio, similar to a \textbf{Subjective Difference Grade (SDG)} acquired from listening tests with human participants. This output is called the \textbf{Objective Difference Grade (ODG)}. The ODG ranges from $0$ to $-4$ and is defined as follows:
+
+\begin{enumerate}[noitemsep]
+    \item [0] = Imperceptible
+    \item [-1] = Perceptible, but not annoying
+    \item [-2] = Slightly annoying
+    \item [-3] = Annoying
+    \item [-4] = Very annoying
+\end{enumerate}
+
+% Sadly, a complete implementation of PEAQ couldn't be found on the internet, so Kabal's Matlab implementation of the algorithm is used outside of this notebook and results are provided for you.
+
+Unfortunately, a complete implementation of PEAQ in Python could not be found. Instead, we utilized Kabal's original MATLAB implementation of the algorithm \cite{kabal2002examination} and loaded the results of the evaluation to integrate with the Python code.
+
+When running the PEAQ algorithm, one important thing to remember is that the audio shouldn't be shifted. Some audio codecs, specifically AAC, apply some paddings in their calculations. For our case, I noticed that there is 1024 sample padding in the decoded signal from the AAC codec. So I had to shift the signal back to be able to get the true ODG result.
+
+\section{Repeating Pattern Extraction Technique}
+\label{sec:repet}
+
+As already mentioned in section \ref{sec:lossless-compression}, most general-purpose lossless compression schemes such as DEFLATE\cite{Deutsch1996rfc1951} are not able to compress unmodified variations of DFT or DCT because they are not able to find any repeating patterns. Another idea that was investigated early during my research was to use the DEFLATE algorithm after the audio is split using \textbf{REpeating Pattern Extraction Technique (REPET)}\cite{Rafii2013repet}. REPET is able to create two masks separating the foreground and background audio ($M_{fg} ,  M_{bg}$) based on identifying  repeating patterns. Rafii and Pardo believe that background audio consists of many repeating tones related to instruments, drums, and bases while foreground audio doesn't have repetitions and is mostly related to vocal sounds. Therefore, REPET can be used to remove the sound of the singer and generate suitable karaoke pieces of music. More importantly, as shown in equation \ref{eq1:repet} foreground audio ($A_{fg}$) and background audio ($A_{bg}$) can regenerate the original audio ($A_{orig}$) using a simple add operation. I will refer to this regenerated audio as \textbf{the sum} of REPET's foreground and background.
+
+\begin{equation}
+\label{eq1:repet}
+\begin{aligned} 
+A_{fg} &= A_{orig} \times M_{fg} \\
+A_{bg} &= A_{orig} \times M_{bg} \\
+A_{fg} + A_{bg} &= A_{orig}
+\end{aligned}
+\end{equation}
+
+I hypothesized that the DEFLATE algorithm should be able to compress REPET's foreground more than the sum on songs that contain fewer vocals as compared to instrumental music. Moreover, I hypothesized that the DEFLATE algorithm should be able to compress REPET's background more than the sum because they contain more obvious repeating patterns. Later in chapter \ref{chapter:Exp}, these two hypotheses are being tested with an experimental study.
+
+\section{Modified Discrete Cosine Transform}
+\label{sec:mdct}
+
+The modified version of Discrete Cosine Transform (MDCT), as already mentioned in section \ref{fig:mp3aac}, is a common step in both MP3 and AAC compression schemas. One important reason for not using DCT in audio compression schemes is that, after the inverse transformation, a quantization error appears in the time domain (figure \ref{fig:piano-dct}). Therefore, the MDCT was developed to have time-domain aliasing cancellation (TDAC) using an overlapping pre-filter technique\cite{Princen1986TDAC}. In a lapped transformation, as shown in figure \ref{fig:lapped-dct}, subsequent wave blocks are overlapped so that the last half of one block coincides with the first half of the next block. When lapping is paired with DCT, it prevents energy leakage into its higher-frequency bins (figure \ref{fig:piano-mdct}), and as a result, more energy is compacted into the DC component. As a result of these advantages, the MDCT is the most widely used time-frequency transformation used in lossy compression techniques in audio data compression.
+
+\begin{figure}[ht]
+  \includesvg[width=\linewidth]{Figures/chap3/mdct/lapped.svg}
+  \caption{A lapped transform, consisting of the DCT with pre-filters ($P$) and post-filters ($P^{-1}$) straddling block boundaries\cite{christopher_montgomery_next_2013}}.
+  \label{fig:lapped-dct}
+\end{figure}
+
+Figure \ref{fig:piano-dct-mdct} shows the advantage of MDCT over DCT for audios signals clearly. In \ref{fig:piano-dct} specifically, quantization errors are visible as vertical lines that repeat throughout the time domain. In \ref{fig:piano-mdct} however, not only the time-domain aliasing is cancelled, but it can also be seen that energies in frequency bins are more concentrated in lower frequencies, making the figure darker as compared to the Spectrum and DCT. As a result of all these benefits, the MDCT is very suitable for audio data compression.
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{0.32\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/mdct/piano-full-spec.svg}
+    \caption{Spectrum}
+    \label{fig:piano-full-spec}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/mdct/piano-dct.svg}
+    \caption{DCT}
+    \label{fig:piano-dct}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \includesvg[width=\linewidth]{Figures/chap3/mdct/piano-mdct.svg}
+    \caption{MDCT}
+    \label{fig:piano-mdct}
+\end{subfigure}
+\caption{DCT and MDCT applied on a recording of an acoustic piano playing DEFGAGFEF tones}
+\label{fig:piano-dct-mdct}
+\end{figure}
+
+\input{chapters/3/sec_simple.tex}

@@ -1,0 +1,72 @@
+\startchapter{Related Work}
+\label{chapter:related}
+
+\newlength{\savedunitlength}
+\setlength{\unitlength}{2em}
+
+There is a large amount of related work to the topic of this thesis. In this chapter, an overview of related work is provided grouped 
+into particular topics relevant to the thesis and references to the associated literature are provided. 
+
+
+\section{Lossless Compression}
+\label{sec:lossless-compression}
+
+One of the earliest and still widely used forms of entropy coding is \textbf{Huffman Coding}. In a digital storage device, string characters are represented using a fixed number of bits. When a string is converted using Huffman encoding, frequently used characters will be stored with fewer bits and not-so-frequently occurring characters will be stored with more bits, resulting in fewer bits used in total \cite{Huffman1952IRE}. For example, the text "aab" when saved in ASCII code, uses 24 bits. By generating a Huffman Tree, it can be determined to replace the character "a" with the binary "0" and the character "b" with the binary "10". The Huffman coding of the text becomes the binary "0010" which can be stored in 4 bits.
+
+An obvious improvement on Huffman coding is Arithmetic Coding in which instead of replacing each character with a code, the entire message can be encoded into a single number\cite{rissanen1976arithmetic}. Both of these encodings can compress a message significantly, however, they are not suitable for texts with repeated content. For example, Huffman coding of the text "aabaab" is the binary "0010 0010". Similarly, in Arithmetic Coding, the encoded binary of a repeated text consumes almost double the number of bits compared to its singular form.
+
+Therefore, before using the Huffman or Arithmetic Coding, it is typically proposed to reduce the  repetition with \textbf{Run-length encoding (RLE)} in which repeating consequent characters are replaced with the character and the length of its repetition\cite{RLE}. So it changes "aabaab" into "a($\times 2$)ba($\times 2$)b". To reduce the repetition further, it was proposed in LZ77 and LZ78 to look back in the sequence of characters to see if it is a match and reuse it\cite{LZ77, LZ78}. So two numbers are required to mention how many characters to go back and how many of them to use. For example, "aabaab" changes into "a(1,1)b(3,3)". Even though this approach is very promising for lossless compression, the challenging part is implementing a match-finding algorithm as a poor implementation can lead to a lot of process and memory usage in large files. Welch's high-performance implementation of LZ78 (a.k.a LZW) became widely used in UNIX operating system with the \verb|compress| command (\verb|.Z| files) and \verb|.gif| image format\cite{LZW}. Later, by combining the LZ77 and Huffman coding, \textbf{DEFLATE algorithm} was born which is still being used in \verb|.gz|, \verb|.zip|, and \verb|.png| files\cite{Deutsch1996rfc1951}. Some of the more space-efficient, but slower compression schemes are LZMA algorithm, which uses LZ77, Markov Chains, and Arithmetic Coding\cite{igor_pavlov_1998_lzma}, is being used in \verb|.7z|| files and Burrows-Wheeler algorithm, which uses a clever text sorting technique followed by RLE and Huffman coding\cite{burrows1994block}, is being used in \verb|.bz| files.
+
+Even though these algorithms are highly effective on human-readable text files, such as HTML, CSS, and programming source codes, they are far less  effective on raw binary data because they such data is less likely to contain repeating patterns in its raw form. Hence, the algorithms mentioned above are used after different types of lossy transforms and manipulations, described in section \ref{sec:audio-compression} and with even more details in sections \ref{sec:fourier} and \ref{sec:mdct}.
+
+\section{Audio Compression}
+\label{sec:audio-compression}
+
+Studies on audio compression began before digital storage devices became widespread. Shannon proposed a logarithmic transformation of the original communication message in the year 1948\cite{Shannon1948Bell}. Later, the Discrete Fourier transform (DFT) was proven to be very useful for audio compaction due to the wave nature of audio signals, more specifically, Discrete Cosine Transformation (DCT) was shown to be very useful in pattern recognition, and scalar-type Wiener filtering\cite{Ahmed1974DCT}. Then, using Time-Domain Aliasing Cancellation (TDAC), a \textbf{Modified version of Discrete Cosine Transform (MDCT)} was designed that is still being used in almost every audio compression scheme today\cite{Princen1986TDAC}. Because of MDCT's importance, it will be described in more detail in section \ref{sec:mdct}.
+
+Since then, many researchers focused on improvements in the MDCT. For example, the MDCT is reported to produce severe artifacts at lower bitrates. To fix this, Sinha and Johnston proposed combining it with wavelet filterbank\cite{sinha_audio_1996}, Dietz et al. developed Spectral Band Replication (SBR)\cite{dietz2002SBR}, Brinker et al. studied Parametric Coding\cite{brinker2002parametric}, and Ravelli et al. proposed using a redundant union of eight MDCT bases\cite{ravelli_union_2008}, which then he showed its benefits in transform-domain audio indexing\cite{ravelli_audio_2010}. \TODO{are any of them used in a known audio file?}
+
+The first time an audio compression scheme was standardized was in 1993 by the Moving Picture Experts Group (MPEG), consisting of an alliance of groups established by ISO (the International Organization for Standardization) and IEC (the International Electrotechnical Commission). \textbf{The third layer of MPEG-1 (MP3)} standard consists of Polyphase Quadrature Filters (PQF filterbank), MDCT, and cancelling Aliases caused by PQF filterbanks\cite{mpeg1-1993}. The successor of MP3, \textbf{the Advanced Audio Coding (AAC)} standard was introduced in MPEG-2 \cite{mpeg2-1995,bosi1997aac} and then used in MPEG-4 standard in 1999 \cite{mpeg4-2001}. AAC doesn't use the PQF filterbank like MP3. Rather, it uses a pure MDCT followed by Temporal Noise Shaping (TNS) and Perceptual Noise Substitution (PNS). Even though AAC is reported to encode with a better audio quality compared to MP3 in lower bitrates\cite{meares_report_1998}, both of these two widely known standards are able to generate a compressed file with less than 20\% size of the PCM audio signal while the quality difference is guaranteed to be imperceptible.
+
+\begin{figure}[ht]
+  \includesvg[inkscapelatex=false,  width=\linewidth]{Figures/chap2/mp3aac.svg}
+  \caption{Steps taken for encoding and decoding MP3 and AAC bitstreams.}
+  \label{fig:mp3aac}
+\end{figure}
+
+Looking at Figure \ref{fig:mp3aac}, we can see that both MP3 and AAC coders receive a PCM audio signal as input, after passing five steps they generate the compressed audio bitstream. The compressed bitstream can be decoded back to the PCM audio signal by passing through inverted versions of those five steps. Three steps are similar in both encoders: MDCT, Scaling \& Quantization, and Huffman Coding. Having said that, I will be focusing more on the first two, specially MDCT, in chapter \ref{chapter:background}. 
+
+Despite being less popular, lossless audio coding has also been receiving attention. Since 2001, the Free Lossless Audio Codec (FLAC) has been an open format developed by Coalson and the Xiph.Org Foundation. Some years later, in 2005, Audio Lossless Coding (ALS) has become standardized in MPEG-4. Unlike MP3 and AAC, both FLAC and MPEG-4 ALS use different types of polynomial or linear models to achieve approximations on small blocks of PCM signal and then they store them alongside their residual difference using the Rice coding\cite{coalson_2001_flac, liebchen_2005_ALC}.
+
+\TODO{TO include these two? \cite{van2016snare} \cite{mokry2020audio}}
+
+\section{Evaluation of Audio Quality}
+
+Many lossy audio encoders, including MP3 and AAC, were assessed subjectively to be able to guarantee an "indistinguishable" audio quality \cite{mpeg1-1993,mpeg4-2001}. An experimental design was required for a generalizable result with a limited number of participants who listened to different outputs of these lossy audio codecs and reported their perceived differences among them. One of the most well-known assessment methods that is still being used is called "MUlti Stimulus test with Hidden Reference and Anchor (MUSHRA)" recommended by the International Telecommunication Union (ITU)\cite{MUSHRA}. It involves a series of tests that are recognized to be one of the most reliable ways to measure the quality of audio.
+
+Since subjective quality assessment is expensive and very time-consuming, many studies were made to develop an objective measurement method that is able to achieve an estimate of the perceived audio quality automatically from the signal. Because many of the introduced objective methods such as PESQ\cite{pesq} and PSQM\cite{psqm} were never thoroughly validated, ITU studied six methods and integrated their promising tools into one single method called \textbf{Perceptual Evaluation of Audio Quality (PEAQ)} \cite{peaq}. PEAQ was carefully validated and it was proven to generate reliable and useful information for some applications. There have been some doubts that PEAQ represents a realistic and valid model of auditory perception because it is a composite of multiple different auditory models, several secondary feature extraction techniques and an artificial neural network. Therefore, even though the PEMO-Q method was proposed which simplifies and slightly improves the PEAQ\cite{huber2006pemo}, PEAQ is still considered to be useful enough to predict subjective audio quality ratings.
+
+PEAQ was examined and implemented by Kabal and other graduate students at McGill University as part of a course project\cite{kabal2002examination} and their implementation was used for this thesis. In chapter \ref{chapter:background}, I will be describing this method and its implementation in more detail.
+
+\section{Repetition in Sound Source Separation}
+
+After efficient algorithms were proposed for \textbf{Non-negative Matrix Factorization (NMF)}\cite{nmf} and showed its ability to identify components with temporal structure\cite{smaragdis2004non}, attempts were made to use it to separate audio objects (such as tones)\cite{smaragdis2004discovering} and even vocal tracks\cite{vembu2005separation} in an audio signal. Because this approach was dependent on particular initialization, features, and prior training for each type of audio, Rafii and Pardo proposed a new method that is based on "self-similarity" and works on any audio as long as it has a repeating structure (such as a piece of music). 
+
+At first, they named their method \textbf{REpeating Pattern Extraction Technique (REPET)} and proposed to segment the audio at the found period of the repeating structure. Then, by averaging segments, they create a repeating segment model which is compared to the original audio to label it as the foreground audio (vocal) or the background (instrumental companions)\cite{rafii2011simple}. Later, Rafii and Pardo improved their method using a similarity matrix\cite{rafii_musicvoice_2012}, noise estimation with an "online" sliding buffer(REPET-SIM)\cite{rafii2013online}, and by taking the element-wise median of all the periodically repeating segments\cite{Rafii2013repet}. Later, supervised by Pardo, Seetharaman proposed to use a 2D Fourier Transform of the audio spectrogram\cite{seetharaman_musicvoice_2017}.
+
+There are many different REPET implementations on the internet, one of which is in the nussl python package implemented by Manilow, Seetharaman, and Pardo\cite{nussl} which I used for this thesis. In chapter \ref{chapter:background}, I will be describing this algorithm in more detail.
+
+% \cite{spleeter2020}
+
+\section{Network Music Performance}
+
+As already mentioned in section \ref{sec:virtual-music-performance}, having even 100 milliseconds of delay between two music performers can easily make them out of sync \cite{chafe2004effect,bartlette2006effect}. In a Network Music Performance (NMP), the time delay is split into 12 different steps starting from the music instrument, transmitting to the network, and to the ear of the other person. These steps are known as Over-all One-way Source-to-Ear (OOSE) and each step contributes differently to the amount of delay between two performers\cite{carot2009fundamentals, rottondi2016overview}.
+
+It is reported that choosing between different audio encoders can significantly affect the OOSE delay. Lutzky has reported a comparison of the algorithmic delay between MP3 and AAC audio encoders which shows at least 20 ms of delay\cite{lutzky2004guideline}. This is hardly acceptable for the OOSE delay budget. Therefore, attempts were made to develop low-delay audio encoders such as ultra-low-delay (ULD)\cite{schuller2002perceptual}, CELT\cite{valin2009full}, and OPUS\cite{valin2016high} encoders which were able to achieve delays as low as 4 ms. 
+
+
+However, \TODO{why aren't they useful?}
+
+\section{Similarity-based Audio Compression}
+
+Only a little number of people have worked on similarity-based audio compression techniques. Cunningham et al. developed an audio compression scheme named ACER (Audio Compression Exploiting Repetition) by finding repeating matches in the audio\cite{cunningham2005play}, and then they tried different approaches for its improvement such as: by using static and dynamic block searchs\cite{cunningham2007advances} and a similarity matrix \cite{cunningham2014data}. They developed a file format\cite{cunningham2009audio} and evaluated it objectively and subjectively\cite{cunningham2013initial,cunningham2019subjective}. The achievements of Cunningham et al. show promising results in the improvement of audio compression. However, they believed more improvements are needed in the search for matching signals as their approaches were mostly not efficient. Recently, Tarjano and Pereira proposed an efficient approach to segment "quasi-periodic" audio signals and despite not seeing improvements in the compression rate, they believe this can be beneficial in lossy audio compression applications\cite{tarjano2022efficient}.

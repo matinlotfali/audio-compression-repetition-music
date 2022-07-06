@@ -1,0 +1,48 @@
+\startchapter{Experiments}
+\label{chapter:Exp}
+
+In this chapter, I try to answer the research question: Can the described P-Frame schema improve the compression of pieces of music with repeated instrumental tones without adding perceptible differences? My hypothesis is that by reusing portions of audio that are being repeated (P-Frames), as long as a piece of music has repeating structure, the scheme should be able to compress better as compared to the compression of every single frame individually (I-Frames). Therefore, to answer the research question quantitatively, it is required to have a statistical analysis of numerical outputs (Dependent Variables) of the scheme that is run over a random collection of pieces of music while controlling all different variables to isolate our conditions (Independent Variables). The following describes my experimental design:
+
+\begin{description}
+\item[Population:] To have an unbiased and random set of pieces of music, I used the "test" set in MUSDB-HQ which consists of 50 full-length songs ($\sim$3h duration) with different genres along with their isolated drums, bass, vocals and others stems \cite{musdb18-hq}.
+
+\item[Dependent Variables (DVs):] After running the compression scheme on each audio file, I measure the following:
+\begin{itemize}
+\item\textbf{Audio Quality:} the audio quality was measured using Objective Difference Grade (ODG) of Perceptual Evaluation of Audio Quality (PEAQ) \cite{peaq} to ensure that the compression scheme does not add perceptible artifacts. The range is between 0 and -4.
+\item\textbf{Compression Ratio:} As each song has a different length, the output size of files is compared by measuring the ratio, so the range is between 0 and 1. It is calculated as:  Compressed File Size / Uncompressed File Size
+\item\textbf{Desirability:} As ODG and Compression-Ratio are correlated, I need a new variable that can help me interpret the effectiveness of the scheme. This measure is named Desirability, has a range between 0 and -1, and is calculated as: (ODG/4) / Compression Ratio
+\item\textbf{P-Ratio:} To measure the number of frames that are reused in the compressed file. P-Ratio has a range between 0 and 1 and is calculated as: N(used P-Frames) / N(all frames)
+% \item MAYBE NOT NEEDED: Reference Distance Histogram represented in 25\%, 50\%, and 75\% quantiles.
+\end{itemize}
+
+\item[Control Variables:] To ensure that we measure only the effectiveness of reused frames, all other techniques of audio compression should be disabled and non-zero parameters should be set to the lowest amount. Therefore, after running the MDCT algorithm, the following parameters are used:
+\begin{itemize}
+\item\textbf{High Frequency Cut} = 0
+\item\textbf{Rounding Decimals} = 0
+\item\textbf{P-Frame Zero Threshold} = ${10}^{-5}$; this value can not be zero. So because MDCT numbers are between -1 and 1 with 12 digits of decimal points, we use the mentioned small value.
+\item\textbf{I-Frame Zero Threshold} = ${10}^{-5}$; to be equal to the other threshold.
+\item\textbf{I-Rate} = 2 seconds; Only in section \ref{sec:pframe-exp}.
+\end{itemize}
+
+\item[Independent Variables (IVs):] The following variables are purposely set and the scheme is executed once per each of them. So each song is compressed 42 ($=6*3 + 6*4$) times.
+\begin{itemize}[leftmargin=*]
+\item\textbf{Audio Type} (6 levels)
+\begin{enumerate}[nosep, leftmargin=*]
+\item\textbf{Mixture:} The original song including vocals, drums, and the rest of the instruments.
+\item\textbf{Vocals:} Only the vocal sound of the song which normally doesn't have repeating tones.
+\item\textbf{Drums:} Only the drums sound of the song which normally repeats with the beat.
+\item\textbf{REPET's Foreground:} The masked foreground of the REPET algorithm which is determined based on lack of repetition.
+\item\textbf{REPET's Background:} The masked background of the REPET algorithm which is determined based on having repetitions.
+\item\textbf{Sum:} A mixture of the latter two which holds the concatenation of REPET's foreground with only I-Frames and REPET's background with P-Frames.
+\end{enumerate}
+\item\textbf{Scheme} (3 levels); Only used in section \ref{sec:pframe-exp}.
+\item\textbf{I-Rate} (4 levels); Only used in section \ref{sec:i-rates}.
+\end{itemize}
+
+\item[Statistical Analysis:] For each DV, I provide figures that show the mean of outputs in each one of the IVs ($N=50$). Error bars in graphs are all showing 95\% confidence intervals. In addition to the graphs, descriptive and inferential statistics are provided. Data is analyzed using a 2-way repeated-measures ANOVA and Tukey HSD post-hoc test. For every ANOVA test, the assumptions of Normality and Sphericity of Distributions were checked. Despite some mild violations of Normality, there was no violation of the Sphericity test. This means degrees of freedom never needed to be corrected. As for violations of the Normality test, it is believed that the ANOVA test is robust in groups of the same size.
+
+\end{description}
+
+
+\input{chapters/5/sec_irate}
+\input{chapters/5/sec_pframes}
