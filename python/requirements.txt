@@ -1,0 +1,17 @@
+# sudo mount -o remount,size=10G /run/user/1000 # User temp dir
+# sudo mount -o remount,size=10G /tmp # System-wide temp dir
+
+wheel # This should be first
+
+ipywidgets
+notebook
+matplotlib
+
+nussl
+numpy<=1.21
+mdct
+librosa
+ffmpeg-python
+pandas
+soundfile
+numpy

@@ -1,0 +1,3 @@
+addpath("PQevalAudioMATLAB/PQevalAudio","PQevalAudioMATLAB/PQevalAudio/CB","PQevalAudioMATLAB/PQevalAudio/Misc","PQevalAudioMATLAB/PQevalAudio/MOV","PQevalAudioMATLAB/PQevalAudio/Patt");
+PQevalAudio('/home/matin/git/UVic/DrumEncoder/tmp/ref.wav', ...
+    '/home/matin/git/UVic/DrumEncoder/tmp/test.wav')
