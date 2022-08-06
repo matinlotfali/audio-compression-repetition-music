@@ -166,11 +166,11 @@ Looking at the used references in Figure \ref{fig:ref_25sec}, we can see that be
     \caption{P-Frames \& References}
     \label{fig:ref_25sec}
 \end{subfigure}
-\caption{Effectiveness of IP-Frames over the drums in the beginning song "Billie Jean" by Michael Jackson}
+\caption{Effectiveness of P-Frames over the drums in the beginning song "Billie Jean" by Michael Jackson}
 \label{fig:billie_jean_25sec}
 \end{figure}
 
-In a different part of the song where more musical instruments are being played and Michael Jackson starts singing, we can see in figure \ref{fig:saved_3sec} shows fewer saved bytes as compared to \ref{fig:unmodified_3sec}. Expectedly, at 29.5 seconds where vocal signals seem to look more chaotic and less repetitive, we can see that the algorithm has failed to find similarities with previous frames. Similarly, in figure \ref{fig:ref_3sec}, we can see that the distance of references suddenly drops at 29.5 seconds before I-Rate enforces an I-Frame at 30 seconds. This would be an indication that the IP-Frame schema behaves differently in different parts of music depending on its ability to detect and reuse similar or repeated information.
+In a different part of the song where more musical instruments are being played and Michael Jackson starts singing, we can see in figure \ref{fig:saved_3sec} shows fewer saved bytes as compared to \ref{fig:unmodified_3sec}. Expectedly, at 29.5 seconds where vocal signals seem to look more chaotic and less repetitive, we can see that the algorithm has failed to find similarities with previous frames. Similarly, in figure \ref{fig:ref_3sec}, we can see that the distance of references suddenly drops at 29.5 seconds before I-Rate enforces an I-Frame at 30 seconds. This would be an indication that the P-Frame schema behaves differently in different parts of music depending on its ability to detect and reuse similar or repeated information.
 
 \begin{figure}[ht]
 \centering
@@ -191,7 +191,7 @@ In a different part of the song where more musical instruments are being played 
     \caption{P-Frames \& References}
     \label{fig:ref_3sec}
 \end{subfigure}
-\caption{Effectiveness of IP-Frames over the vocals in the song "Billie Jean" by Michael Jackson}
+\caption{Effectiveness of P-Frames over the vocals in the song "Billie Jean" by Michael Jackson}
 \label{fig:billie_jean_3sec}
 \end{figure}
 
