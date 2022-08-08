@@ -22,7 +22,7 @@ To analyze the repeating signal easier, I focus on MDCT's 25th frequency bin whi
     \label{fig:shifting}
 \end{figure}
 
-The minimum amount in figure \ref{fig:shifting} is almost always not zero. That is because even though two audio signals sound identical to a human ear, they have some level of imperceptible differences. Figure \ref{fig:f3af2} shows these differences more clearly by overlapping both $F_3$ and $F_2$ on each other. When subtracting these two frames, as can be seen in figure \ref{fig:f3-f2}, the output is not zero, but it has some noises around the zero amplitude. This can be evidence of the reason the DEFLATE algorithm can not perform its lossless compression over songs with repeating tones because the repetition is not exact.
+The minimum amount in figure \ref{fig:shifting} is almost always not zero. That is because even though two audio signals sound identical to a human ear, they have some level of imperceptible differences. Figure \ref{fig:f3af2} shows these differences more clearly by overlapping both $F_3$ and $F_2$ on each other. When subtracting these two frames, as can be seen in figure \ref{fig:f3-f2}, the output is not zero, but it has some noises around the zero amplitude. This can be evidence of the reason the DEFLATE algorithm can not perform its lossless compression over songs with repeating notes because the repetition is not exact.
 
 So because human ears can not perceive minor differences between $F_3$ and $F_2$, I propose that by manipulating signals we can help the DEFLATE algorithm and achieve a better compression size. This manipulation can be done by removing noises around the zero amplitude of differences between two frames using a threshold. Figure \ref{fig:f3-f2} shows this threshold should be able to separate perceptible differences from imperceptible ones. Applying this \textbf{Zero Threshold} would result in many zeros (figure \ref{fig:pframe3}) which can be useful for the DEFLATE algorithm to identify as a reusable signal. The resulting frame has similarities with P-Frames in the video encoding layer of MPEG-1 standard\cite{mpeg1-1993-video}.
 
@@ -63,12 +63,13 @@ So similar to the MPEG scheme, a frame that is made from the differences of audi
     \label{fig:ipp}
 \end{figure}
 
-To make this proposed approach more efficient, some conditions need to be defined and managed:
+To make this proposed approach more efficient, some conditions need to be defined, managed, and clarified:
 \begin{itemize}
     \item A P-Frame should be used only if it has less information compared to the corresponding I-Frame. In cases where a repeating frame can not be found, using a P-Frame would contain a greater or equal amount of information and therefore it would not useful for the compression size. 
     \item Each decoding from a P-Frame produces a signal that is imperceptible compared to the original. However, after continuous use of P-Frames, all these minor imperceptible differences can accumulate to some quiet but perceptible noises. Therefore, similar to the MPEG scheme, I-Frames should be forced to be used on a constant frequency. The frequency of I-Frame enforcement can be called \textbf{I-Rate}. 
     \item It would be very inefficient to find a suitable similarity between two frames that are 1 minute apart. Finding a suitable reference for a P-Frame should have a limit. Without this limit, the processing time would increase exponentially. We can use the same I-Rate parameter and enforce P-Frames not to look further behind an enforced I-Frame.
-    \item It is not efficient for a frame to have the size of 1 second. Even though the 1 second was used in the example above for simpler analysis, in fact, a smaller frame size can increase the chances of finding similarities. I propose that we use one single MDCT time block (containing only 512 frequency bins) as a single frame.
+    \item It is not efficient for a frame to have the size of 1 second. Even though the 1 second was used in the example above for simpler analysis, in fact, a smaller frame size can increase the chances of finding similarities. I propose that we use the smallest frame size possible which is one single MDCT time block or one single column of MDCT containing only 512 frequency bins. It an audio file with sample rate of 44.1 KHz, it would be the equavalent of .023 of a second ($= 1 / (44100 / 512 / 2)$).
+    \item Because the frame size is proposed to be only one single MDCT columns, our frame comparisons will only be operating in the frequency domain and not the time domain. Therefore, even though the comparison method might be similar to the correlator or the matched filter, the comparison is fundamentally different because of the use of MDCT.
 \end{itemize}
 
 \section{Implementation}
@@ -143,7 +144,7 @@ Now with the new P-Frame scheme defined, it is time to observe how it behaves on
     \label{fig:hist}
 \end{figure}
 
-Most noticeably in Figure \ref{fig:hist}, we can see that more than 13.2\% of P-Frames refer to their most immediate previous frame ($\sim .023$ of a second) and more than 5\% refer to their second most immediate previous frame ($\sim .045$ of a second). This probably means even though repeating beats and notes can have similar frames, those frames related to the same tone are even more similar. Looking at the differences between I-Frame only and P-Frame spectrum in figure \ref{fig:billie_jean_25sec}, we can see that \ref{fig:saved_25sec} has darker areas where the red line is higher as compared to the \ref{fig:unmodified_25sec}, especially in areas that the drum sound is fading. This is an indication of saved bytes by reusing previous information in every P-Frame.
+Most noticeably in Figure \ref{fig:hist}, we can see that more than 13.2\% of P-Frames refer to their most immediate previous frame ($\sim .023$ of a second) and more than 5\% refer to their second most immediate previous frame ($\sim .045$ of a second). This probably means even though repeating beats and notes can have similar frames, those frames related to the same note are even more similar. Looking at the differences between I-Frame only and P-Frame spectrum in figure \ref{fig:billie_jean_25sec}, we can see that \ref{fig:saved_25sec} has darker areas compared to the \ref{fig:unmodified_25sec}, especially in areas that the drum sound is decaying and the red line is higher. The red line shows the increase in the number of zero elements that were added after applying the P-Frame scheme. This is an indication of how many bytes were saved and more compression each P-Frame.
 
 Looking at the used references in Figure \ref{fig:ref_25sec}, we can see that between 0 to 2 seconds, the distance of references increases linearly except for areas where an unfamiliar or new signal is played. At 2 seconds, because the parameter I-Rate was set, references suddenly drop to zero and they would not refer to any frames before 2 seconds. This will be repeated every 2 seconds.
 
@@ -157,7 +158,7 @@ Looking at the used references in Figure \ref{fig:ref_25sec}, we can see that be
 \hfill
 \begin{subfigure}{0.32\textwidth}
     \includesvg[width=\linewidth]{Figures/chap4/tests/saved_2.5sec.svg}
-    \caption{P-Frames \& Saved Bytes}
+    \caption{P-Frames \& Increased Number of Zero Elements}
     \label{fig:saved_25sec}
 \end{subfigure}
 \hfill
@@ -166,11 +167,11 @@ Looking at the used references in Figure \ref{fig:ref_25sec}, we can see that be
     \caption{P-Frames \& References}
     \label{fig:ref_25sec}
 \end{subfigure}
-\caption{Effectiveness of IP-Frames over the drums in the beginning song "Billie Jean" by Michael Jackson}
+\caption{Effectiveness of P-Frames over the drums in the beginning song "Billie Jean" by Michael Jackson}
 \label{fig:billie_jean_25sec}
 \end{figure}
 
-In a different part of the song where more musical instruments are being played and Michael Jackson starts singing, we can see in figure \ref{fig:saved_3sec} shows fewer saved bytes as compared to \ref{fig:unmodified_3sec}. Expectedly, at 29.5 seconds where vocal signals seem to look more chaotic and less repetitive, we can see that the algorithm has failed to find similarities with previous frames. Similarly, in figure \ref{fig:ref_3sec}, we can see that the distance of references suddenly drops at 29.5 seconds before I-Rate enforces an I-Frame at 30 seconds. This would be an indication that the IP-Frame schema behaves differently in different parts of music depending on its ability to detect and reuse similar or repeated information.
+In a different part of the song where more musical instruments are being played and Michael Jackson starts singing, we can see in figure \ref{fig:saved_3sec} shows less increase in the number of zero elements as compared to \ref{fig:unmodified_3sec}. Expectedly, at 29.5 seconds where vocal signals seem to look more chaotic and less repetitive, we can see that the algorithm has failed to find similarities with previous frames. Similarly, in figure \ref{fig:ref_3sec}, we can see that the distance of references suddenly drops at 29.5 seconds before I-Rate enforces an I-Frame at 30 seconds. This would be an indication that the P-Frame schema behaves differently in different parts of music depending on its ability to detect and reuse similar or repeated information.
 
 \begin{figure}[ht]
 \centering
@@ -182,7 +183,7 @@ In a different part of the song where more musical instruments are being played 
 \hfill
 \begin{subfigure}{0.32\textwidth}
     \includesvg[width=\linewidth]{Figures/chap4/tests/saved_3sec.svg}
-    \caption{P-Frames \& Saved Bytes}
+    \caption{P-Frames \& Increased Number of Zero Elements}
     \label{fig:saved_3sec}
 \end{subfigure}
 \hfill
@@ -191,7 +192,7 @@ In a different part of the song where more musical instruments are being played 
     \caption{P-Frames \& References}
     \label{fig:ref_3sec}
 \end{subfigure}
-\caption{Effectiveness of IP-Frames over the vocals in the song "Billie Jean" by Michael Jackson}
+\caption{Effectiveness of P-Frames over the vocals in the song "Billie Jean" by Michael Jackson}
 \label{fig:billie_jean_3sec}
 \end{figure}
 

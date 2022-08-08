@@ -42,7 +42,7 @@ A(t)=\sum_{n=1}^{5}n\cos(nwt),\quad w=10\times2\pi
 \label{fig:dct-idct}
 \end{figure}
 
-Fourier transforms can also treat non-periodic functions as periodic with an infinite period. This can generate approximate frequency domain representations of non-periodic functions, allowing a waveform to be converted between its time-domain representation and its frequency domain representation. One realistic example can be seen in figure \ref{fig:piano-wav-spec} which shows a recording of an acoustic piano which plays DEFGAGFEF tones in a raw waveform (\ref{fig:piano-wav}) and a heat map of the time-frequency domain, a.k.a Audio Spectrogram (\ref{fig:piano-spec}).
+Fourier transforms can also treat non-periodic functions as periodic with an infinite period. This can generate approximate frequency domain representations of non-periodic functions, allowing a waveform to be converted between its time-domain representation and its frequency domain representation. One realistic example can be seen in figure \ref{fig:piano-wav-spec} which shows a recording of an acoustic piano which plays DEFGAGFEF notes in a raw waveform (\ref{fig:piano-wav}) and a heat map of the time-frequency domain, a.k.a Audio Spectrogram (\ref{fig:piano-spec}).
 
 \begin{figure}[ht]
 \centering
@@ -57,7 +57,7 @@ Fourier transforms can also treat non-periodic functions as periodic with an inf
     \caption{Audio Spectrogram}
     \label{fig:piano-spec}
 \end{subfigure}
-\caption{A recording of an acoustic piano playing DEFGAGFEF tones}
+\caption{A recording of an acoustic piano playing DEFGAGFEF notes}
 \label{fig:piano-wav-spec}
 \end{figure}
 
@@ -92,6 +92,8 @@ Perceptual Evaluation of Audio Quality (PEAQ) \cite{peaq} is a standardized appr
     \item [-3] = Annoying
     \item [-4] = Very annoying
 \end{enumerate}
+
+In cases that the ODG is higher than zero, the difference is still considered as imperceptible. This can happen because PEAQ is based on a machine learned regression model that outputs a decimal number with correlations to the aformentioned interpretations of their closest integer number.
 
 % Sadly, a complete implementation of PEAQ couldn't be found on the internet, so Kabal's Matlab implementation of the algorithm is used outside of this notebook and results are provided for you.
 
@@ -147,7 +149,7 @@ Figure \ref{fig:piano-dct-mdct} shows the advantage of MDCT over DCT for audios 
     \caption{MDCT}
     \label{fig:piano-mdct}
 \end{subfigure}
-\caption{DCT and MDCT applied on a recording of an acoustic piano playing DEFGAGFEF tones}
+\caption{DCT and MDCT applied on a recording of an acoustic piano playing DEFGAGFEF notes}
 \label{fig:piano-dct-mdct}
 \end{figure}
 
