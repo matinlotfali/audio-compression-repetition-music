@@ -20,16 +20,20 @@ It can be concluded from section \ref{sec:i-rates} that 2 seconds is a suitable 
 \end{figure}
 
 \begin{table}[ht]
+\fontsize{8}{10}\selectfont
+\newcommand{\wrap}[1]{\parbox{2cm}{\vspace{1.5mm}#1\vspace{1mm}}}
 \centering
-\begin{tabularx}{\linewidth}{|X|X|X|X|X|}
+\begin{tabularx}{\linewidth}{|m{2cm}||Y|Y||Y|Y||Y|Y||Y|Y||Y|Y|}
 \hline
-Input Type & Mixture & Vocals & Drums & REPET's Foreground & REPET's Background \\
+Input Type & \multicolumn{2}{c||}{Mixture} & \multicolumn{2}{c||}{Vocals} & \multicolumn{2}{c||}{Drums} & \multicolumn{2}{c||}{\wrap{REPET's\\ Foreground}} & \multicolumn{2}{c|}{\wrap{REPET's\\ Background}} \\
 \hline
-Lossless & $M=.164, SD=.009$ & $M=.151, SD=.015$ & $M=.149, SD=.03$ & $M=.15, SD=.016$ & $M=.159, SD=.009$ \\
+& Mean & SD & Mean & SD & Mean & SD & Mean & SD & Mean & SD \\
 \hline
-All I-Frames & $M=.152, SD=.035$ & $M=.146, SD=.017$ & $M=.113, SD=.088$ & $M=.14, SD=.022$ & $M=.146, SD=.039$ \\
+Lossless & .164 & .009 & .151 & .015 & .149 & .03 & .15 & .016 & .159 & .009 \\
 \hline
-With P-Frames & $M=.114, SD=.137$ & $M=-.46, SD=.645$ & $M=-.161, SD=.479$ & $M=-.065, SD=.194$ & $M=.098, SD=.165$\\
+All I-Frames & .152 & .035 & .146 & .017 & .113 & .088 & .14 & .022 & .146 & .039 \\
+\hline
+With P-Frames & .114 & .137 & -.46 & .645 & -.161 & .479 & -.065 & .194 & .098 & .165\\
 \hline
 \end{tabularx}
 \caption[Table of Schemas in Audio Quality amongst different types of audio]{Table of Schemas in Audio Quality amongst different types of audio. Audio Quality is measured using Objective Difference Grade (ODG) in Perceptual Evaluation of Audio Quality (PEAQ) (0 = Imperceptible, -1 = Perceptible, but not annoying)}
@@ -56,16 +60,20 @@ In summary, the results confirmed that having P-Frames can significantly reduce 
 \end{figure}
 
 \begin{table}[ht]
+\fontsize{8}{10}\selectfont
+\newcommand{\wrap}[1]{\parbox{2cm}{\vspace{1.5mm}#1\vspace{1mm}}}
 \centering
-\begin{tabularx}{\linewidth}{|X|X|X|X|X|}
+\begin{tabularx}{\linewidth}{|m{2cm}||Y|Y||Y|Y||Y|Y||Y|Y||Y|Y|}
 \hline
-Input Type & Mixture & Vocals & Drums & REPET's Foreground & REPET's Background \\
+Input Type & \multicolumn{2}{c||}{Mixture} & \multicolumn{2}{c||}{Vocals} & \multicolumn{2}{c||}{Drums} & \multicolumn{2}{c||}{\wrap{REPET's\\ Foreground}} & \multicolumn{2}{c|}{\wrap{REPET's\\ Background}} \\
 \hline
-Lossless & $M=.993, SD=.019$ & $M=.717, SD=.182$ & $M=.85, SD=.123$ & $M=.91, SD=.026$ & $M=.917, SD=.021$ \\
+& Mean & SD & Mean & SD & Mean & SD & Mean & SD & Mean & SD \\
 \hline
-All I-Frames & $M=.906, SD=.023$ & $M=.704, SD=.178$ & $M=.836, SD=.124$ & $M=.839, SD=.04$ & $M=.893, SD=.021$ \\
+Lossless & .993 & .019 & .717 & .182 & .85 & .123 & .91 & .026 & .917 & .021 \\
 \hline
-With P-Frames & $M=.873, SD=.035$ & $M=.594, SD=.174$ & $M=.755, SD=.125$ & $M=.774, SD=.054$ & $M=.893, SD=.022$ \\
+All I-Frames & .906 & .023 & .704 & .178 & .836 & .124 & .839 & .04 & .893 & .021 \\
+\hline
+With P-Frames & .873 & .035 & .594 & .174 & .755 & .125 & .774 & .054 & .893 & .022 \\
 \hline
 \end{tabularx}
 \caption{Table of Schemas in Compression Ratio amongst different types of audio}
@@ -95,16 +103,20 @@ This explains the reason that vocals and drums audio inputs have better compress
 \end{figure}
 
 \begin{table}[ht]
+\fontsize{8}{10}\selectfont
+\newcommand{\wrap}[1]{\parbox{2cm}{\vspace{1.5mm}#1\vspace{1mm}}}
 \centering
-\begin{tabularx}{\linewidth}{|X|X|X|X|X|}
+\begin{tabularx}{\linewidth}{|m{2cm}||Y|Y||Y|Y||Y|Y||Y|Y||Y|Y|}
 \hline
-Input Type & Mixture & Vocals & Drums & REPET's Foreground & REPET's Background \\
+Input Type & \multicolumn{2}{c||}{Mixture} & \multicolumn{2}{c||}{Vocals} & \multicolumn{2}{c||}{Drums} & \multicolumn{2}{c||}{\wrap{REPET's\\ Foreground}} & \multicolumn{2}{c|}{\wrap{REPET's\\ Background}} \\
 \hline
-Lossless & $M=.044, SD=.003$ & $M=.059, SD=.033$ & $M=.045, SD=.012$ & $M=.041, SD=.005$ & $M=.043, SD=.003$ \\
+& Mean & SD & Mean & SD & Mean & SD & Mean & SD & Mean & SD \\
 \hline
-All I-Frames & $M=.042, SD=.01$ & $M=.058, SD=.03$ & $M=.034, SD=.027$ & $M=.042, SD=.007$ & $M=.041, SD=.011$ \\
+Lossless & .044 & .003 & .059 & .033 & .045 & .012 & .041 & .005 & .043 & .003 \\
 \hline
-With P-Frames & $M=.032, SD=.041$ & $M=-.241, SD=.36$ & $M=-.07, SD=.205$ & $M=-.022, SD=.065$ & $M=.028, SD=.051$\\
+All I-Frames & .042 & .01 & .058 & .03 & .034 & .027 & .042 & .007 & .041 & .011 \\
+\hline
+With P-Frames & .032 & .041 & -.241 & .36 & -.07 & .205 & -.022 & .065 & .028 & .051\\
 \hline
 \end{tabularx}
 \caption{Table of Compression Schemas in Desirability amongst different types of audio}
